@@ -1,0 +1,7 @@
+.Rhistory
+.Rproj.user
+.DS_Store
+*.bat
+*.dta
+*.do
+~$*
