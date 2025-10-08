@@ -78,7 +78,7 @@ p_WBp1k <- living_review_data %>%
   annotate(
     "richtext",
     x = 66,
-    y = 2.5,
+    y = 2.3,
     label = paste0(
       "<span style='color:#E69F00;font-size:9pt;'>(LMIC)</span> operates in low- or<br>",
       "middle-income countries<br><br>",
@@ -150,7 +150,7 @@ p_CpWB <- living_review_data %>%
   annotate(
     "richtext",
     x = 7100,
-    y = 10.8, 
+    y = 10.2, 
     label = paste0(
       "<span style='color:#E69F00;font-size:9pt;'>(LMIC)</span> operates in low- or<br>",
       "middle-income countries<br><br>",
@@ -198,7 +198,7 @@ p_evaluators <- living_review_data_evaluators %>%
   geom_col(width = 0.4) +
   geom_text(
     aes(label = paste0(scales::dollar_format()(CpWB))), 
-    hjust = -0.4, color = "black", size = 4, alpha = 1
+    hjust = -0.1, color = "black", size = 4, alpha = 1
   ) + 
   scale_y_continuous(
     labels = scales::dollar, 
