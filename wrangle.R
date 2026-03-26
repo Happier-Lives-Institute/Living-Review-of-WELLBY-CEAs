@@ -1,15 +1,22 @@
-#~############################################################################~#
-# Preparations ----
-#~############################################################################~#
 
-# Load dependencies
-source("dependencies/dependencies.R")
+living_review_url <- "https://docs.google.com/spreadsheets/d/1qcNT4QXurBW52OKBBy8b4ty6YqppkTD9Xu-4Kq0JbwE/"
 
 # Load the data
-living_review_data <- read_sheet(
-  "https://docs.google.com/spreadsheets/d/1qcNT4QXurBW52OKBBy8b4ty6YqppkTD9Xu-4Kq0JbwE/",
-  sheet = "Living Review Table"
-)
+living_review_data <- read_sheet(living_review_url, sheet = "Living Review Table")
+
+# Get BOTEC/Unpublished living review data
+living_review_data_botecs <- read_sheet(living_review_url, sheet = "BOTECs from the WHR")
+
+# Other studies
+living_review_data_other <- read_sheet(living_review_url, sheet = "Other")
+
+# Fix variables with strings in numeric
+living_review_data$`Cost per WELLBY` <- map_dbl(living_review_data$`Cost per WELLBY`, ~ as.numeric(.x))
+living_review_data$`WELLBYs created per $1,000 donated` <- map_dbl(living_review_data$`WELLBYs created per $1,000 donated`, ~ as.numeric(.x))
+living_review_data_other$`Duration of effect (years)` <- as.list(living_review_data_other$`Duration of effect (years)`)
+
+living_review_data <- bind_rows(living_review_data, living_review_data_botecs) %>% 
+  bind_rows(living_review_data_other)
 
 # Clean the names
 living_review_data <- living_review_data %>%
@@ -27,19 +34,16 @@ living_review_data <- living_review_data %>%
     publication_status = `Publication status`,
     evaluator = `Evaluator`,
     intervention = `What the charity does`,
-    dosage = `Dosage`
+    dosage = `Dosage`,
+    recommendation = `HLI recommendation`
   )
 
 # Take only useful columns
 living_review_data <- living_review_data %>%
   select(
     charity, intervention, CpWB, WBp1k, country_income,
-    depth_of_analysis, publication_status, evaluator
+    depth_of_analysis, publication_status, evaluator, recommendation
   )
-
-# Fix variables with strings in numeric
-living_review_data$CpWB <- map_dbl(living_review_data$CpWB, ~ as.numeric(.x))
-living_review_data$WBp1k <- map_dbl(living_review_data$WBp1k, ~ as.numeric(.x))
 
 # General wrangling of variables
 living_review_data <- living_review_data %>%
@@ -62,17 +66,12 @@ living_review_data <- living_review_data %>%
     )
   )
 
-#~############################################################################~#
-# Create different selections ----
-#~############################################################################~#
-
 # Filter out rows with NAs
 living_review_data <- living_review_data %>%
   filter(!is.na(CpWB))
 
-# # Remove BOTECs and unpublished
-# living_review_data <- living_review_data %>%
-#   filter(
-#     !str_detect(publication_status, "BOTEC"),
-#     !str_detect(publication_status, "Unpublished")
-#   )
+# Always remove life boats
+living_review_data <- living_review_data %>% filter(charity != "Royal National Lifeboat Institution")
+
+# Save data because we are going to loop through it
+living_review_data_temp <- living_review_data
