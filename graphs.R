@@ -100,6 +100,14 @@ p_WBp1k <- living_review_data %>%
   ); p_WBp1k
 
 # Save the plot
+fmt_wbp1k         <- function(x) ifelse(x < 1, round_c(x, 2), round_c(x, 1))
+pure_earth_wbp1k  <- living_review_data %>% filter(charity == "Pure Earth (Ghana)") %>% pull(WBp1k)
+taimaka_wbp1k     <- living_review_data %>% filter(charity == "Taimaka") %>% pull(WBp1k)
+friendship_wbp1k  <- living_review_data %>% filter(charity == "Friendship Bench") %>% pull(WBp1k)
+strongminds_wbp1k <- living_review_data %>% filter(charity == "StrongMinds") %>% pull(WBp1k)
+fbb_wbp1k         <- living_review_data %>% filter(charity == "Football Beyond Borders") %>% pull(WBp1k)
+guide_dogs_wbp1k  <- living_review_data %>% filter(grepl("Guide Dogs", charity)) %>% pull(WBp1k)
+
 hli_double_save(
   filename_no_end = paste0("graphs/", current_settings$version, "_WBp1k"),
   plot = p_WBp1k,
@@ -107,7 +115,20 @@ hli_double_save(
   height = height_large_graphs,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = TRUE
+  set_svg_same_ratio = T,
+  svg_title = paste0(
+    "Dot plot of ", nrow(living_review_data), " interventions ranked by WELLBYs created per $1,000 donated. ",
+    "LMIC interventions dominate the top, led by Pure Earth Ghana (", fmt_wbp1k(pure_earth_wbp1k), "), ",
+    "Taimaka (", fmt_wbp1k(taimaka_wbp1k), "), ",
+    "Friendship Bench (", fmt_wbp1k(friendship_wbp1k), "), and ",
+    "StrongMinds (", fmt_wbp1k(strongminds_wbp1k), "). ",
+    "HIC interventions cluster near zero, with Football Beyond Borders producing just ",
+    fmt_wbp1k(fbb_wbp1k), " WELLBYs per $1,000 donated",
+    if (current_settings$version == "all" && length(guide_dogs_wbp1k) > 0)
+      paste0(" and Guide Dogs UK producing just ", fmt_wbp1k(guide_dogs_wbp1k), " WELLBYs per $1,000")
+    else "",
+    "."
+  )
 )
 
 #~############################################################################~#
@@ -177,6 +198,14 @@ p_CpWB <- living_review_data %>%
   ); p_CpWB
 
 # Save the plot
+fmt_cpwb          <- function(x) scales::dollar(round(x, 0))
+pure_earth_cpwb   <- living_review_data %>% filter(charity == "Pure Earth (Ghana)") %>% pull(CpWB)
+taimaka_cpwb      <- living_review_data %>% filter(charity == "Taimaka") %>% pull(CpWB)
+friendship_cpwb   <- living_review_data %>% filter(charity == "Friendship Bench") %>% pull(CpWB)
+strongminds_cpwb  <- living_review_data %>% filter(charity == "StrongMinds") %>% pull(CpWB)
+fbb_cpwb          <- living_review_data %>% filter(charity == "Football Beyond Borders") %>% pull(CpWB)
+guide_dogs_cpwb   <- living_review_data %>% filter(grepl("Guide Dogs", charity)) %>% pull(CpWB)
+
 hli_double_save(
   filename_no_end = paste0("graphs/", current_settings$version, "_CpWB"),
   plot = p_CpWB,
@@ -184,7 +213,20 @@ hli_double_save(
   height = height_large_graphs,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = TRUE
+  set_svg_same_ratio = T,
+  svg_title = paste0(
+    "Dot plot of ", nrow(living_review_data), " interventions ranked by cost per WELLBY. ",
+    "LMIC interventions dominate the cheapest end, led by Pure Earth Ghana (", fmt_cpwb(pure_earth_cpwb), "), ",
+    "Taimaka (", fmt_cpwb(taimaka_cpwb), "), ",
+    "Friendship Bench (", fmt_cpwb(friendship_cpwb), "), and ",
+    "StrongMinds (", fmt_cpwb(strongminds_cpwb), "). ",
+    "HIC interventions cluster at the expensive end, with Football Beyond Borders at ",
+    fmt_cpwb(fbb_cpwb), " per WELLBY",
+    if (current_settings$version == "all" && length(guide_dogs_cpwb) > 0)
+      paste0(" and Guide Dogs UK costing over ", fmt_cpwb(guide_dogs_cpwb))
+    else "",
+    "."
+  )
 )
 
 #~############################################################################~#
@@ -247,7 +289,7 @@ hli_double_save(
   height = 1750,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = TRUE
+  set_svg_same_ratio = T
 )
 
 #~############################################################################~#
@@ -257,8 +299,8 @@ hli_double_save(
 living_review_data_evaluators <- living_review_data %>% group_by(evaluator) %>%
   summarise(
     n_charities = n(),
-    CpWB = mean(CpWB, na.rm = TRUE),
-    WBp1k = mean(WBp1k, na.rm = TRUE)
+    CpWB = mean(CpWB, na.rm = T),
+    WBp1k = mean(WBp1k, na.rm = T)
   ) %>%
   arrange(desc(WBp1k))
 
@@ -287,6 +329,12 @@ p_evaluators <- living_review_data_evaluators %>%
   ); p_evaluators
 
 # Save the plot
+fmt_cpwb_eval <- function(ev) {
+  scales::dollar(round(
+    living_review_data_evaluators %>% filter(evaluator == ev) %>% pull(CpWB), 0
+  ))
+}
+
 hli_double_save(
   filename_no_end = paste0("graphs/", current_settings$version, "_evaluators"),
   plot = p_evaluators,
@@ -294,7 +342,15 @@ hli_double_save(
   height = 3*300,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = TRUE
+  set_svg_same_ratio = T,
+  svg_title = paste0(
+    "Bar chart comparing average cost per WELLBY by evaluator. ",
+    "The Happier Lives Institute evaluations average ", fmt_cpwb_eval("Happier Lives Institute"),
+    ", far cheaper than State of Life (", fmt_cpwb_eval("State of Life"),
+    "), Krekel and colleagues (", fmt_cpwb_eval("Krekel and colleagues"),
+    "), and Pro Bono Economics (", fmt_cpwb_eval("Pro Bono Economics"),
+    "), reflecting the Happier Lives Institute's focus on LMIC interventions."
+  )
 )
 
 #~############################################################################~#
@@ -308,8 +364,8 @@ if(current_settings$version == "living_review") {
     living_review_data %>% mutate(rank = rank(CpWB, ties.method = "first")) %>% 
       filter(rank < 6) %>% summarise(
         charity = "Top 5 charities",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       ),
     living_review_data %>% filter(charity == "Pure Earth (Ghana)") %>% 
       select(charity, CpWB, WBp1k) %>% mutate(
@@ -322,14 +378,14 @@ if(current_settings$version == "living_review") {
     living_review_data %>%  
       filter(country_income_simple == "HICs") %>% summarise(
         charity = "Charities operating in HICs (UK)",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       ),
     living_review_data %>% 
       filter(country_income_simple == "LMICs") %>% summarise(
         charity = "Charities operating in LMICs",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       )
   ) %>% arrange(CpWB)
   
@@ -341,8 +397,8 @@ if(current_settings$version == "living_review") {
     living_review_data %>% mutate(rank = rank(CpWB, ties.method = "first")) %>% 
       filter(rank < 6) %>% summarise(
         charity = "Top 5 charities",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       ),
     living_review_data %>% filter(charity == "Pure Earth (Ghana)") %>% 
       select(charity, CpWB, WBp1k) %>% mutate(
@@ -357,20 +413,20 @@ if(current_settings$version == "living_review") {
                publication_status != "BOTEC for WHR chapter" 
       ) %>% summarise(
         charity = "Charities operating in HICs (UK)\nnot counting Guide Dogs UK\nand homelessness BOTECS",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       ),
     living_review_data %>% 
       filter(country_income_simple == "LMICs") %>% summarise(
         charity = "Charities operating in LMICs",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       ),
     living_review_data %>%
       filter(publication_status == "BOTEC for WHR chapter") %>% summarise(
         charity = "BOTECs of Guide Dogs UK\nand homelessness\nfor the WHR chapter",
-        CpWB = mean(CpWB, na.rm = TRUE),
-        WBp1k = mean(WBp1k, na.rm = TRUE)
+        CpWB = mean(CpWB, na.rm = T),
+        WBp1k = mean(WBp1k, na.rm = T)
       )
   ) %>% arrange(CpWB)
   
@@ -413,7 +469,7 @@ if(current_settings$version == "living_review") {
       x = 6500, y = 4.5,
       label = paste0("×", round(
         data_comparison$CpWB[nrow(data_comparison)] /
-                       data_comparison$CpWB[1]
+          data_comparison$CpWB[1]
         , 0)),
       size = text_size,
       fontface = "bold"
@@ -482,7 +538,7 @@ if(current_settings$version == "living_review") {
       text = element_text(family = "Avenir"),
       legend.position = "none"
     )
-    
+  
 } else if(current_settings$version == "all") {
   
   p_comparison <- data_comparison %>% 
@@ -573,6 +629,13 @@ if(current_settings$version == "living_review") {
 p_comparison
 
 # Save the plot
+dc_top5  <- data_comparison %>% filter(grepl("Top 5", charity)) %>% pull(CpWB)
+dc_hics  <- data_comparison %>% filter(grepl("HICs", charity)) %>% pull(CpWB)
+dc_pe    <- data_comparison %>% filter(grepl("Pure Earth", charity)) %>% pull(CpWB)
+dc_fbb   <- data_comparison %>% filter(grepl("Football", charity)) %>% pull(CpWB)
+dc_botec <- data_comparison %>% filter(grepl("BOTECs", charity)) %>% pull(CpWB)
+fmt_dc   <- function(x) scales::dollar(round(x, 0))
+
 hli_double_save(
   filename_no_end = paste0("graphs/", current_settings$version, "_comparisons"),
   plot = p_comparison,
@@ -580,5 +643,18 @@ hli_double_save(
   height = current_settings$comparison_height,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = TRUE
+  set_svg_same_ratio = T,
+  svg_title = paste0(
+    "Bar chart showing cost per WELLBY across charity groups. ",
+    "Top 5 LMIC charities (", fmt_dc(dc_top5), ") are ",
+    round(dc_hics / dc_top5, 0), " times cheaper than UK charities (", fmt_dc(dc_hics), "). ",
+    "Pure Earth (", fmt_dc(dc_pe), ") is ",
+    round(dc_fbb / dc_pe, 0), " times more cost-effective than the least cost-effective ",
+    "evaluated charity, Football Beyond Borders (", fmt_dc(dc_fbb), ")",
+    if (current_settings$version == "all" && length(dc_botec) > 0)
+      paste0(" and ", round(dc_botec / dc_pe, 0), " times more cost-effective than an average of ",
+             "Guide Dogs and helping with homelessness (", fmt_dc(dc_botec), ")")
+    else "",
+    "."
+  )
 )

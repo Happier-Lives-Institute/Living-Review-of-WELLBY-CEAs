@@ -5,18 +5,18 @@
 # Clean
 rm(list=ls())
 
+# Set random seed for reproducibility
+set.seed(123)
+
 # Libraries
 library(cowplot)
 library(readr)
 library(tidyverse)
 library(magrittr)
-library(meta)
-library(metafor)
 library(googlesheets4)
 library(ggpattern)
 library(RColorBrewer)
 library(patchwork)
-library(ggrepel)
 library(ggtext)
 library(lubridate)
 library(xml2)
