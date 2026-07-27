@@ -104,7 +104,7 @@ make_double <- function(p_cpwb, p_wbp1k) {
 p_WBp1k <- living_review_data %>%
   ggplot(aes(y = reorder(charity_label, WBp1k), x = WBp1k,
              color = evaluator,
-             size = depth_of_analysis,
+             size = depth_of_analysis_num,
   )) +
   geom_text(
     aes(label = WBp1k_label),
@@ -187,7 +187,7 @@ hli_double_save(
 p_CpWB <- living_review_data %>%
   ggplot(aes(y = reorder(charity_label, -CpWB), x = CpWB,
              color = evaluator,
-             size = depth_of_analysis,
+             size = depth_of_analysis_num,
   )) +
   geom_text(
     aes(label = scales::dollar_format()(CpWB)),
@@ -289,7 +289,7 @@ p_CpWB_HIC <- living_review_data %>%
   filter(country_income_simple == "HICs") %>%
   ggplot(aes(y = reorder(charity_label, -CpWB), x = CpWB,
              color = evaluator,
-             size = depth_of_analysis,
+             size = depth_of_analysis_num,
   )) +
   geom_text(
     aes(label = scales::dollar_format()(CpWB)),
@@ -973,7 +973,7 @@ if(current_settings$version == "living_review") {
     ) +
     # Top 5 to HICs
     geom_curve(
-      y = 4.75, x = 65, xend = endpoint_common_arrow, yend = 3,
+      y = 4.75, x = 60, xend = endpoint_common_arrow, yend = 3,
       arrow = arrow(length = unit(arrow_length, "npc")),
       curvature = curve_length,
       colour = "black"

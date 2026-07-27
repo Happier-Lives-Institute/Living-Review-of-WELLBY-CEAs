@@ -20,6 +20,7 @@ library(patchwork)
 library(ggtext)
 library(lubridate)
 library(xml2)
+library(flextable)
 
 # get rid of summarise messages
 options(dplyr.summarise.inform = FALSE)

@@ -46,6 +46,7 @@ for (i in 1:nrow(my_settings)) {
 
   print(paste0("Running analyses for version: ", current_settings$version))
   source("graphs.R")
+  source("tables.R")
 
   # Number of CEAs
   print(nrow(living_review_data))

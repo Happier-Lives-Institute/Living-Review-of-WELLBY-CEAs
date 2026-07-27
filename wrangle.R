@@ -41,7 +41,8 @@ living_review_data <- living_review_data %>%
 # Take only useful columns
 living_review_data <- living_review_data %>%
   select(
-    charity, intervention, CpWB, WBp1k, country_income,
+    charity, intervention, CpWB, WBp1k, duration, country_income,
+    total_sample, total_studies, causal_evidence, evidence_relevance,
     depth_of_analysis, publication_status, evaluator, recommendation
   )
 
@@ -57,8 +58,9 @@ living_review_data <- living_review_data %>%
     evaluator = ifelse(
       str_detect(evaluator, "Krekel"), "Krekel and colleagues", evaluator
     ),
-    # Make a numeric depth equivalent
-    depth_of_analysis = case_when(
+    # Make a numeric depth equivalent (used for the size aesthetic in plots;
+    # the original text is preserved in depth_of_analysis for the tables)
+    depth_of_analysis_num = case_when(
       depth_of_analysis == "Shallow" ~ 1,
       depth_of_analysis == "Medium" ~ 2,
       depth_of_analysis == "In-depth" ~ 4,
