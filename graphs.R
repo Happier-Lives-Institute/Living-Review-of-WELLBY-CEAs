@@ -361,7 +361,7 @@ text_size_evaluators <- 3
 #~=======================================================~=
 
 p_evaluators_CpWB <- living_review_data %>%
-  ggplot(aes(y = reorder(evaluator, -CpWB), x = CpWB,
+  ggplot(aes(y = evaluator, x = CpWB,
              color = evaluator)) +
   geom_point(shape = 16, alpha = 0.7) +
   geom_segment(
@@ -433,7 +433,7 @@ hli_double_save(
 #~=======================================================~=
 
 p_evaluators_WBp1k <- living_review_data %>%
-  ggplot(aes(y = reorder(evaluator, WBp1k), x = WBp1k,
+  ggplot(aes(y = evaluator, x = WBp1k,
              color = evaluator)) +
   geom_point(shape = 16, alpha = 0.7) +
   geom_segment(
