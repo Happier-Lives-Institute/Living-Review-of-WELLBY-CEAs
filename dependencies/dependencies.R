@@ -31,3 +31,8 @@ suppressMessages(devtools::source_url("https://raw.githubusercontent.com/Happier
 suppressMessages(devtools::source_url("https://raw.githubusercontent.com/Happier-Lives-Institute/general-functions/main/functions_reporting.R"))
 # Custom themes and styles
 suppressMessages(devtools::source_url("https://raw.githubusercontent.com/Happier-Lives-Institute/general-functions/main/functions_styles.R"))
+
+geom_mean <- function(x, na.rm = TRUE) {
+  if (any(x <= 0, na.rm = TRUE)) stop("all values must be positive")
+  exp(mean(log(x), na.rm = na.rm))
+}
