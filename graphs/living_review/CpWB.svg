@@ -1,4 +1,4 @@
-<svg role="img" aria-labelledby="CpWB-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 720.00 432.00'><title id="CpWB-title">Dot plot of 24 interventions ranked by cost per WELLBY. LMIC interventions dominate the cheapest end, led by Pure Earth Ghana ($9), Taimaka ($15), Friendship Bench ($21), and StrongMinds ($25). HIC interventions cluster at the expensive end, with Football Beyond Borders at $8,691 per WELLBY.</title>
+<svg role="img" aria-labelledby="CpWB-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 720.00 432.00'><title id="CpWB-title">Dot plot of 24 interventions ranked by cost per WELLBY. LMIC interventions dominate the cheapest end, led by Pure Earth (Ghana) ($9), Taimaka ($15), Friendship Bench ($21), and StrongMinds ($25). HIC interventions cluster at the expensive end, and the least cost-effective charity in the sample, Football Beyond Borders, costs $8,691 per WELLBY.</title>
 <g class='svglite'>
 <defs>
   <style type='text/css'>
@@ -185,8 +185,8 @@
 <text x='294.17' y='255.87' style='font-size: 10.00px; font-family: "Avenir";' textLength='27.78px' lengthAdjust='spacingAndGlyphs'>[Youth</text>
 <text x='324.73' y='255.87' style='font-size: 10.00px; font-family: "Avenir";' textLength='48.88px' lengthAdjust='spacingAndGlyphs'>mentoring]</text>
 <text x='380.29' y='255.87' style='font-size: 12.00px;fill: #0072B2; font-family: "Avenir";' textLength='26.55px' lengthAdjust='spacingAndGlyphs'>(HIC)</text>
-<text x='177.74' y='240.08' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='24.44px' lengthAdjust='spacingAndGlyphs'>Safe</text>
-<text x='205.73' y='240.08' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='64.88px' lengthAdjust='spacingAndGlyphs'>Soulemates</text>
+<text x='184.63' y='240.08' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='24.44px' lengthAdjust='spacingAndGlyphs'>Safe</text>
+<text x='212.62' y='240.08' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='57.98px' lengthAdjust='spacingAndGlyphs'>Soulmates</text>
 <text x='277.29' y='240.08' style='font-size: 10.00px; font-family: "Avenir";' textLength='54.27px' lengthAdjust='spacingAndGlyphs'>[Community</text>
 <text x='334.34' y='240.08' style='font-size: 10.00px; font-family: "Avenir";' textLength='39.27px' lengthAdjust='spacingAndGlyphs'>building]</text>
 <text x='380.29' y='240.08' style='font-size: 12.00px;fill: #0072B2; font-family: "Avenir";' textLength='26.55px' lengthAdjust='spacingAndGlyphs'>(HIC)</text>

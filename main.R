@@ -57,4 +57,10 @@ for (i in 1:nrow(my_settings)) {
     summarise(n = n()) %>%
     arrange(desc(n)) %>% print()
   
+  # Number of CEAs per target country
+  living_review_data %>%
+    group_by(country_income_simple) %>%
+    summarise(n = n()) %>%
+    arrange(desc(n)) %>% print()
+  
 }

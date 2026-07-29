@@ -1,4 +1,4 @@
-<svg role="img" aria-labelledby="comparison_WBp1k-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 576.00 216.00'><title id="comparison_WBp1k-title">Bar chart showing WELLBYs created per $1,000 donated across charity groups. Top 5 LMIC charities (54.92) are 66 times more cost-effective than UK charities (0.83). Pure Earth (105.43) is 916 times more cost-effective than the least cost-effective evaluated charity, Football Beyond Borders (0.12).</title>
+<svg role="img" aria-labelledby="comparison_WBp1k-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 576.00 216.00'><title id="comparison_WBp1k-title">Bar chart showing WELLBYs created per $1,000 donated across charity groups. Top 5 LMIC charities (54.92) are 66 times more cost-effective than UK charities (0.83). Pure Earth (Ghana) (105.43) is 916 times more cost-effective than the least cost-effective evaluated charity, Football Beyond Borders (0.12).</title>
 <g class='svglite'>
 <defs>
   <style type='text/css'>
@@ -88,7 +88,7 @@
 <text x='193.82' y='94.32' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='152.05px' lengthAdjust='spacingAndGlyphs'>Charities operating in LMICs</text>
 <text x='193.82' y='62.36' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='77.55px' lengthAdjust='spacingAndGlyphs'>Top 5 charities</text>
 <text x='193.82' y='23.92' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='140.19px' lengthAdjust='spacingAndGlyphs'>Most cost-effective charity</text>
-<text x='193.82' y='36.88' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='116.25px' lengthAdjust='spacingAndGlyphs'>in sample (Pure Earth)</text>
+<text x='193.82' y='36.88' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='161.00px' lengthAdjust='spacingAndGlyphs'>in sample (Pure Earth (Ghana))</text>
 <polyline points='196.81,154.00 200.30,154.00 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <polyline points='196.81,122.03 200.30,122.03 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <polyline points='196.81,90.07 200.30,90.07 ' style='stroke-width: 1.07; stroke-linecap: butt;' />

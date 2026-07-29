@@ -1,4 +1,4 @@
-<svg role="img" aria-labelledby="comparison_double-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 1152.00 288.00'><title id="comparison_double-title">Bar chart showing cost per WELLBY across charity groups. Top 5 LMIC charities ($17) are 70 times cheaper than UK charities ($1,204). Pure Earth ($9) is 916 times more cost-effective than the least cost-effective evaluated charity, Football Beyond Borders ($8,691) and 3222 times more cost-effective than an average of Guide Dogs and helping with homelessness ($30,564). Bar chart showing WELLBYs created per $1,000 donated across charity groups. Top 5 LMIC charities (58.47) are 70 times more cost-effective than UK charities (0.83). Pure Earth (105.43) is 916 times more cost-effective than the least cost-effective evaluated charity, Football Beyond Borders (0.12) and 3222 times more cost-effective than an average of Guide Dogs and helping with homelessness (0.03).</title>
+<svg role="img" aria-labelledby="comparison_double-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 1152.00 288.00'><title id="comparison_double-title">Bar chart showing cost per WELLBY across charity groups. Top 5 LMIC charities ($17) are 70 times cheaper than UK charities ($1,204). Pure Earth (Ghana) ($9) is 916 times more cost-effective than the least cost-effective evaluated charity, Football Beyond Borders ($8,691) and 3222 times more cost-effective than an average of Guide Dogs and helping with homelessness ($30,564). Bar chart showing WELLBYs created per $1,000 donated across charity groups. Top 5 LMIC charities (58.47) are 70 times more cost-effective than UK charities (0.83). Pure Earth (Ghana) (105.43) is 916 times more cost-effective than the least cost-effective evaluated charity, Football Beyond Borders (0.12) and 3222 times more cost-effective than an average of Guide Dogs and helping with homelessness (0.03).</title>
 <g class='svglite'>
 <defs>
   <style type='text/css'>
@@ -155,7 +155,7 @@
 <text x='171.05' y='111.29' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='126.73px' lengthAdjust='spacingAndGlyphs'>Charities operating in LMICs</text>
 <text x='171.05' y='74.63' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='64.62px' lengthAdjust='spacingAndGlyphs'>Top 5 charities</text>
 <text x='171.05' y='32.58' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='116.80px' lengthAdjust='spacingAndGlyphs'>Most cost-effective charity</text>
-<text x='171.05' y='43.38' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='96.84px' lengthAdjust='spacingAndGlyphs'>in sample (Pure Earth)</text>
+<text x='171.05' y='43.38' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='134.09px' lengthAdjust='spacingAndGlyphs'>in sample (Pure Earth (Ghana))</text>
 <polyline points='174.04,217.70 177.53,217.70 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <polyline points='174.04,181.05 177.53,181.05 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <polyline points='174.04,144.40 177.53,144.40 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
@@ -262,7 +262,7 @@
 <text x='741.57' y='111.29' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='126.73px' lengthAdjust='spacingAndGlyphs'>Charities operating in LMICs</text>
 <text x='741.57' y='74.63' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='64.62px' lengthAdjust='spacingAndGlyphs'>Top 5 charities</text>
 <text x='741.57' y='32.58' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='116.80px' lengthAdjust='spacingAndGlyphs'>Most cost-effective charity</text>
-<text x='741.57' y='43.38' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='96.84px' lengthAdjust='spacingAndGlyphs'>in sample (Pure Earth)</text>
+<text x='741.57' y='43.38' text-anchor='end' style='font-size: 10.00px; font-family: "Avenir";' textLength='134.09px' lengthAdjust='spacingAndGlyphs'>in sample (Pure Earth (Ghana))</text>
 <polyline points='744.56,217.70 748.05,217.70 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <polyline points='744.56,181.05 748.05,181.05 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
 <polyline points='744.56,144.40 748.05,144.40 ' style='stroke-width: 1.07; stroke-linecap: butt;' />

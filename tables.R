@@ -1,13 +1,8 @@
 #~############################################################################~#
 # Summary table ----
 #~############################################################################~#
-# Sourced once per analysis version from the main.R loop. Reads
-# `living_review_data` (already filtered for the current version) and
-# `current_settings$version` from the loop environment, and writes a Word
-# table into graphs/<version>/table.docx.
 
-# Output directory (created in graphs.R; recreate defensively in case this is
-# ever sourced on its own)
+# Output directory
 graph_dir <- file.path("graphs", current_settings$version)
 dir.create(graph_dir, showWarnings = FALSE, recursive = TRUE)
 
@@ -25,15 +20,14 @@ flatten_col <- function(x) {
 # Replace NA with an empty string for clean display
 blank_na <- function(x) ifelse(is.na(x), "", x)
 
-# Build the display frame: sorted most cost-effective first, columns and
-# headers exactly as requested.
+# Build the display frame
 table_data <- living_review_data %>%
   arrange(desc(WBp1k)) %>%
   transmute(
     `Charity`                            = blank_na(charity),
     `What the charity does`              = blank_na(intervention),
-    `Cost per WELLBY`                    = blank_na(paste0("$", round_c(CpWB, 0))),
-    `WELLBYs created per $1,000 donated` = blank_na(as.character(round_c(WBp1k, 1))),
+    `CpWB`                               = blank_na(paste0("$", round_c(CpWB, 2))),
+    `WBp1k`                              = blank_na(as.character(round_c(WBp1k, 2))),
     `Duration of effect (years)`         = blank_na(flatten_col(duration)),
     `Country income`                     = blank_na(country_income),
     `Total sample`                       = blank_na(flatten_col(total_sample)),
@@ -51,7 +45,8 @@ ft <- flextable(table_data) %>%
   bold(part = "header") %>%
   align(align = "left", part = "all") %>%
   valign(valign = "top", part = "body") %>%
-  set_table_properties(layout = "autofit")
+  set_table_properties(layout = "autofit") %>% 
+  fontsize(size = 8, part = "all")
 
 # Save to Word
 save_as_docx(ft, path = file.path(graph_dir, "table.docx"))

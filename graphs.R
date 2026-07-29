@@ -36,23 +36,39 @@ living_review_data <- living_review_data %>%
     )
   )
 
-height_large_graphs <- max(75*nrow(living_review_data), 1750)
+living_review_data_in_sample <- living_review_data %>% 
+  filter(publication_status == "Published")
+
+# The most/least cost-effective charity is always taken from the published sample
+most_cost_effective_row <- living_review_data_in_sample %>%
+  slice_max(WBp1k, n = 1, with_ties = FALSE)
+least_cost_effective_row <- living_review_data_in_sample %>%
+  slice_min(WBp1k, n = 1, with_ties = FALSE)
+
+most_cost_effective_charity  <- most_cost_effective_row$charity
+least_cost_effective_charity <- least_cost_effective_row$charity
+
+# Labels for the two single-charity groups in the comparison plots.
+label_most  <- paste0("Most cost-effective charity\nin sample (", most_cost_effective_charity, ")")
+label_least <- paste0("Least cost-effective\ncharity in sample\n(", least_cost_effective_charity, ")")
 
 #~============================================================================~=
 ## Reusable plot elements ----
 #~============================================================================~=
 
-# LMIC/HIC explanatory annotation reused across the two large dot plots
+height_large_graphs <- max(75*nrow(living_review_data), 1750)
+
+# LMIC/HIC explanatory annotation
 income_annotation_label <- paste0(
   "<span style='color:#E69F00;font-size:9pt;'>(LMIC)</span> operates in low- or<br>",
   "middle-income countries<br><br>",
   "<span style='color:#0072B2;font-size:9pt'>(HIC)</span> operates in<br>high-income countries"
 )
 
-# Evaluator colour scale reused across every plot coloured by evaluator
+# Evaluator colour scale
 evaluator_color_scale <- scale_color_manual(name = "Evaluator", values = evaluator_colours)
 
-# Depth-of-analysis size scale reused across the three dot plots
+# Depth-of-analysis size scale
 depth_size_scale <- scale_size_continuous(
   name = "Depth of analysis",
   breaks = c(1, 2, 4),
@@ -71,17 +87,17 @@ dotplot_legend_theme <- theme(
 
 # Fill palettes for the grouped comparison bars (5 groups vs 6 with BOTECs)
 comparison_fill_5 <- c(
-  "Least cost-effective\ncharity in sample\n(Football Beyond Borders)" = "#3498DB",
+  setNames("#3498DB", label_least),
   "Charities operating in HICs (UK)" = "#B39BC8",
   "Top 5 charities" = "#F5B041",
-  "Most cost-effective charity\nin sample (Pure Earth)" = "#27AE60",
+  setNames("#27AE60", label_most),
   "Charities operating in LMICs" = "#D98880"
 )
 comparison_fill_6 <- c(
-  "Least cost-effective\ncharity in sample\n(Football Beyond Borders)" = "#3498DB",
+  setNames("#3498DB", label_least),
   "Charities operating in HICs (UK)\nnot counting Guide Dogs UK\nand homelessness BOTECS" = "#B39BC8",
   "Top 5 charities" = "#F5B041",
-  "Most cost-effective charity\nin sample (Pure Earth)" = "#27AE60",
+  setNames("#27AE60", label_most),
   "Charities operating in LMICs" = "#D98880",
   "BOTECs of Guide Dogs UK\nand homelessness\nfor the WHR chapter" = "#F1948A"
 )
@@ -89,6 +105,12 @@ comparison_fill_6 <- c(
 # Helper: pull a variable for the charity matching a (fixed) name pattern
 pull_charity <- function(pattern, var) {
   living_review_data %>% filter(grepl(pattern, charity, fixed = TRUE)) %>% pull({{ var }})
+}
+
+# Helper: "A (1), B (2), and C (3)" for the alt-text sentences
+and_list <- function(x) {
+  if (length(x) <= 1) return(paste0(x, collapse = ""))
+  paste0(paste(x[-length(x)], collapse = ", "), ", and ", x[length(x)])
 }
 
 # Combine a CpWB and a WBp1k plot into one side-by-side figure labelled by metric
@@ -146,24 +168,23 @@ p_WBp1k <- living_review_data %>%
   )
 
 # Alt-text for the plot
-fmt_wbp1k         <- function(x) ifelse(x < 1, round_c(x, 2), round_c(x, 1))
-pure_earth_wbp1k  <- pull_charity("Pure Earth", WBp1k)
-taimaka_wbp1k     <- pull_charity("Taimaka", WBp1k)
-friendship_wbp1k  <- pull_charity("Friendship Bench", WBp1k)
-strongminds_wbp1k <- pull_charity("StrongMinds", WBp1k)
-fbb_wbp1k         <- pull_charity("Football Beyond Borders", WBp1k)
-guide_dogs_wbp1k  <- pull_charity("Guide Dogs", WBp1k)
+fmt_wbp1k        <- function(x) ifelse(x < 1, round_c(x, 2), round_c(x, 1))
+guide_dogs_wbp1k <- pull_charity("Guide Dogs", WBp1k)
+
+# The leading charities are read off the data rather than named by hand, so the
+# alt-text keeps up when the ranking changes.
+top_charities_wbp1k <- living_review_data_in_sample %>%
+  arrange(desc(WBp1k)) %>% slice_head(n = 4)
 
 title_WBp1k <- paste0(
   "Dot plot of ", nrow(living_review_data), " interventions ranked by WELLBYs created per $1,000 donated. ",
-  "LMIC interventions dominate the top, led by Pure Earth Ghana (", fmt_wbp1k(pure_earth_wbp1k), "), ",
-  "Taimaka (", fmt_wbp1k(taimaka_wbp1k), "), ",
-  "Friendship Bench (", fmt_wbp1k(friendship_wbp1k), "), and ",
-  "StrongMinds (", fmt_wbp1k(strongminds_wbp1k), "). ",
-  "HIC interventions cluster near zero, with Football Beyond Borders producing just ",
-  fmt_wbp1k(fbb_wbp1k), " WELLBYs per $1,000 donated",
+  "LMIC interventions dominate the top, led by ",
+  and_list(paste0(top_charities_wbp1k$charity, " (", fmt_wbp1k(top_charities_wbp1k$WBp1k), ")")), ". ",
+  "HIC interventions cluster near zero, and the least cost-effective charity in the sample, ",
+  least_cost_effective_charity, ", produces just ",
+  fmt_wbp1k(least_cost_effective_row$WBp1k), " WELLBYs per $1,000 donated",
   if (current_settings$version == "all" && length(guide_dogs_wbp1k) > 0)
-    paste0(" and Guide Dogs UK producing just ", fmt_wbp1k(guide_dogs_wbp1k), " WELLBYs per $1,000")
+    paste0(" and Guide Dogs UK produces just ", fmt_wbp1k(guide_dogs_wbp1k), " WELLBYs per $1,000")
   else "",
   "."
 )
@@ -230,24 +251,21 @@ p_CpWB <- living_review_data %>%
   )
 
 # Alt-text for the plot
-fmt_cpwb          <- function(x) scales::dollar(round(x, 0))
-pure_earth_cpwb   <- pull_charity("Pure Earth", CpWB)
-taimaka_cpwb      <- pull_charity("Taimaka", CpWB)
-friendship_cpwb   <- pull_charity("Friendship Bench", CpWB)
-strongminds_cpwb  <- pull_charity("StrongMinds", CpWB)
-fbb_cpwb          <- pull_charity("Football Beyond Borders", CpWB)
-guide_dogs_cpwb   <- pull_charity("Guide Dogs", CpWB)
+fmt_cpwb        <- function(x) scales::dollar(round(x, 0))
+guide_dogs_cpwb <- pull_charity("Guide Dogs", CpWB)
+
+top_charities_cpwb <- living_review_data_in_sample %>%
+  arrange(CpWB) %>% slice_head(n = 4)
 
 title_CpWB <- paste0(
   "Dot plot of ", nrow(living_review_data), " interventions ranked by cost per WELLBY. ",
-  "LMIC interventions dominate the cheapest end, led by Pure Earth Ghana (", fmt_cpwb(pure_earth_cpwb), "), ",
-  "Taimaka (", fmt_cpwb(taimaka_cpwb), "), ",
-  "Friendship Bench (", fmt_cpwb(friendship_cpwb), "), and ",
-  "StrongMinds (", fmt_cpwb(strongminds_cpwb), "). ",
-  "HIC interventions cluster at the expensive end, with Football Beyond Borders at ",
-  fmt_cpwb(fbb_cpwb), " per WELLBY",
+  "LMIC interventions dominate the cheapest end, led by ",
+  and_list(paste0(top_charities_cpwb$charity, " (", fmt_cpwb(top_charities_cpwb$CpWB), ")")), ". ",
+  "HIC interventions cluster at the expensive end, and the least cost-effective charity in the sample, ",
+  least_cost_effective_charity, ", costs ",
+  fmt_cpwb(least_cost_effective_row$CpWB), " per WELLBY",
   if (current_settings$version == "all" && length(guide_dogs_cpwb) > 0)
-    paste0(" and Guide Dogs UK costing over ", fmt_cpwb(guide_dogs_cpwb))
+    paste0(" and Guide Dogs UK costs over ", fmt_cpwb(guide_dogs_cpwb))
   else "",
   "."
 )
@@ -354,20 +372,30 @@ living_review_data_evaluators <- living_review_data %>% group_by(evaluator) %>%
   ) %>%
   arrange(desc(mean_WBp1k))
 
+# Order the evaluators from most to least cost-effective (top to bottom of the y
+# axis).
+evaluator_order <- living_review_data_evaluators %>%
+  arrange(mean_WBp1k) %>% pull(evaluator)
+
+living_review_data_evaluators <- living_review_data_evaluators %>%
+  mutate(evaluator = factor(evaluator, levels = evaluator_order))
+living_review_data_by_evaluator <- living_review_data %>%
+  mutate(evaluator = factor(evaluator, levels = evaluator_order))
+
 text_size_evaluators <- 3
 
 #~=======================================================~=
 ## CpWB ----
 #~=======================================================~=
 
-p_evaluators_CpWB <- living_review_data %>%
+p_evaluators_CpWB <- living_review_data_by_evaluator %>%
   ggplot(aes(y = evaluator, x = CpWB,
              color = evaluator)) +
   geom_point(shape = 16, alpha = 0.7) +
   geom_segment(
     data = living_review_data_evaluators,
     aes(y = evaluator, yend = evaluator, x = min_CpWB, xend = max_CpWB, color = evaluator),
-    size = 1, alpha = 0.5
+    linewidth = 1, alpha = 0.5
   ) +
   geom_point(
     data = living_review_data_evaluators,
@@ -432,14 +460,14 @@ hli_double_save(
 ## WBp1k ----
 #~=======================================================~=
 
-p_evaluators_WBp1k <- living_review_data %>%
+p_evaluators_WBp1k <- living_review_data_by_evaluator %>%
   ggplot(aes(y = evaluator, x = WBp1k,
              color = evaluator)) +
   geom_point(shape = 16, alpha = 0.7) +
   geom_segment(
     data = living_review_data_evaluators,
     aes(y = evaluator, yend = evaluator, x = min_WBp1k, xend = max_WBp1k, color = evaluator),
-    size = 1, alpha = 0.5
+    linewidth = 1, alpha = 0.5
   ) +
   geom_point(
     data = living_review_data_evaluators,
@@ -532,13 +560,13 @@ if(current_settings$version == "living_review") {
         CpWB = geom_mean(CpWB, na.rm = T),
         WBp1k = geom_mean(WBp1k, na.rm = T)
       ),
-    living_review_data %>% filter(charity == "Pure Earth (Ghana)") %>%
+    living_review_data %>% filter(charity == most_cost_effective_charity) %>%
       select(charity, CpWB, WBp1k) %>% mutate(
-        charity = "Most cost-effective charity\nin sample (Pure Earth)"
+        charity = label_most
       ),
-    living_review_data %>% filter(charity == "Football Beyond Borders") %>%
+    living_review_data %>% filter(charity == least_cost_effective_charity) %>%
       select(charity, CpWB, WBp1k) %>% mutate(
-        charity = "Least cost-effective\ncharity in sample\n(Football Beyond Borders)"
+        charity = label_least
       ),
     living_review_data %>%
       filter(country_income_simple == "HICs") %>% summarise(
@@ -563,13 +591,13 @@ if(current_settings$version == "living_review") {
         CpWB = geom_mean(CpWB, na.rm = T),
         WBp1k = geom_mean(WBp1k, na.rm = T)
       ),
-    living_review_data %>% filter(charity == "Pure Earth (Ghana)") %>%
+    living_review_data %>% filter(charity == most_cost_effective_charity) %>%
       select(charity, CpWB, WBp1k) %>% mutate(
-        charity = "Most cost-effective charity\nin sample (Pure Earth)"
+        charity = label_most
       ),
-    living_review_data %>% filter(charity == "Football Beyond Borders") %>%
+    living_review_data %>% filter(charity == least_cost_effective_charity) %>%
       select(charity, CpWB, WBp1k) %>% mutate(
-        charity = "Least cost-effective\ncharity in sample\n(Football Beyond Borders)"
+        charity = label_least
       ),
     living_review_data %>%
       filter(country_income_simple == "HICs" &
@@ -640,7 +668,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 6400, y = 4.5,
-      label = paste0("×", round(cmp("Football", CpWB) / cmp("Pure Earth", CpWB), 0)),
+      label = paste0("×", round(cmp("Least cost-effective", CpWB) / cmp("Most cost-effective", CpWB), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -653,7 +681,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 2250, y = 4.25,
-      label = paste0("×", round(cmp("HICs (UK)", CpWB) / cmp("Pure Earth", CpWB), 0)),
+      label = paste0("×", round(cmp("HICs (UK)", CpWB) / cmp("Most cost-effective", CpWB), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -727,7 +755,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 11500, y = 4.5,
-      label = paste0("×", round(cmp("Football", CpWB) / cmp("Pure Earth", CpWB), 0)),
+      label = paste0("×", round(cmp("Least cost-effective", CpWB) / cmp("Most cost-effective", CpWB), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -741,7 +769,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 25750, y = 4.5,
-      label = paste0("×", round(cmp("BOTECs", CpWB) / cmp("Pure Earth", CpWB), 0)),
+      label = paste0("×", round(cmp("BOTECs", CpWB) / cmp("Most cost-effective", CpWB), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -755,7 +783,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 7500, y = 4.5,
-      label = paste0("×", round(cmp("HICs (UK)", CpWB) / cmp("Pure Earth", CpWB), 0)),
+      label = paste0("×", round(cmp("HICs (UK)", CpWB) / cmp("Most cost-effective", CpWB), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -802,8 +830,8 @@ if(current_settings$version == "living_review") {
 # Alt-text for the plot
 dc_top5  <- cmp("Top 5", CpWB)
 dc_hics  <- cmp("HICs (UK)", CpWB)
-dc_pe    <- cmp("Pure Earth", CpWB)
-dc_fbb   <- cmp("Football", CpWB)
+dc_most  <- cmp("Most cost-effective", CpWB)
+dc_least <- cmp("Least cost-effective", CpWB)
 dc_botec <- cmp("BOTECs", CpWB)
 fmt_dc   <- function(x) scales::dollar(round(x, 0))
 
@@ -811,11 +839,11 @@ title_comparison_CpWB <- paste0(
   "Bar chart showing cost per WELLBY across charity groups. ",
   "Top 5 LMIC charities (", fmt_dc(dc_top5), ") are ",
   round(dc_hics / dc_top5, 0), " times cheaper than UK charities (", fmt_dc(dc_hics), "). ",
-  "Pure Earth (", fmt_dc(dc_pe), ") is ",
-  round(dc_fbb / dc_pe, 0), " times more cost-effective than the least cost-effective ",
-  "evaluated charity, Football Beyond Borders (", fmt_dc(dc_fbb), ")",
+  most_cost_effective_charity, " (", fmt_dc(dc_most), ") is ",
+  round(dc_least / dc_most, 0), " times more cost-effective than the least cost-effective ",
+  "evaluated charity, ", least_cost_effective_charity, " (", fmt_dc(dc_least), ")",
   if (current_settings$version %in% c("all", "only_add_typical_acts") && length(dc_botec) > 0)
-    paste0(" and ", round(dc_botec / dc_pe, 0), " times more cost-effective than an average of ",
+    paste0(" and ", round(dc_botec / dc_most, 0), " times more cost-effective than an average of ",
            "Guide Dogs and helping with homelessness (", fmt_dc(dc_botec), ")")
   else "",
   "."
@@ -870,7 +898,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 65, y = 0.9,
-      label = paste0("×", round(cmp("Pure Earth", WBp1k) / cmp("Football", WBp1k), 0)),
+      label = paste0("×", round(cmp("Most cost-effective", WBp1k) / cmp("Least cost-effective", WBp1k), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -883,7 +911,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 30, y = 1.25,
-      label = paste0("×", round(cmp("Pure Earth", WBp1k) / cmp("HICs (UK)", WBp1k), 0)),
+      label = paste0("×", round(cmp("Most cost-effective", WBp1k) / cmp("HICs (UK)", WBp1k), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -954,7 +982,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 20, y = 1.65,
-      label = paste0("×", round(cmp("Pure Earth", WBp1k) / cmp("Football", WBp1k), 0)),
+      label = paste0("×", round(cmp("Most cost-effective", WBp1k) / cmp("Least cost-effective", WBp1k), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -967,7 +995,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 30, y = 2.4,
-      label = paste0("×", round(cmp("Pure Earth", WBp1k) / cmp("HICs (UK)", WBp1k), 0)),
+      label = paste0("×", round(cmp("Most cost-effective", WBp1k) / cmp("HICs (UK)", WBp1k), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -1008,7 +1036,7 @@ if(current_settings$version == "living_review") {
     annotate(
       "text",
       x = 15, y = 0.8,
-      label = paste0("×", round(cmp("Pure Earth", WBp1k) / cmp("BOTECs", WBp1k), 0)),
+      label = paste0("×", round(cmp("Most cost-effective", WBp1k) / cmp("BOTECs", WBp1k), 0)),
       size = text_size,
       fontface = "bold"
     ) +
@@ -1027,8 +1055,8 @@ if(current_settings$version == "living_review") {
 # Alt-text for the plot
 dc_top5  <- cmp("Top 5", WBp1k)
 dc_hics  <- cmp("HICs (UK)", WBp1k)
-dc_pe    <- cmp("Pure Earth", WBp1k)
-dc_fbb   <- cmp("Football", WBp1k)
+dc_most  <- cmp("Most cost-effective", WBp1k)
+dc_least <- cmp("Least cost-effective", WBp1k)
 dc_botec <- cmp("BOTECs", WBp1k)
 fmt_dc   <- function(x) round_c(x, 2)
 
@@ -1036,11 +1064,11 @@ title_comparison_WBp1k <- paste0(
   "Bar chart showing WELLBYs created per $1,000 donated across charity groups. ",
   "Top 5 LMIC charities (", fmt_dc(dc_top5), ") are ",
   round(dc_top5 / dc_hics, 0), " times more cost-effective than UK charities (", fmt_dc(dc_hics), "). ",
-  "Pure Earth (", fmt_dc(dc_pe), ") is ",
-  round(dc_pe / dc_fbb, 0), " times more cost-effective than the least cost-effective ",
-  "evaluated charity, Football Beyond Borders (", fmt_dc(dc_fbb), ")",
+  most_cost_effective_charity, " (", fmt_dc(dc_most), ") is ",
+  round(dc_most / dc_least, 0), " times more cost-effective than the least cost-effective ",
+  "evaluated charity, ", least_cost_effective_charity, " (", fmt_dc(dc_least), ")",
   if (current_settings$version %in% c("all", "only_add_typical_acts") && length(dc_botec) > 0)
-    paste0(" and ", round(dc_pe / dc_botec, 0), " times more cost-effective than an average of ",
+    paste0(" and ", round(dc_most / dc_botec, 0), " times more cost-effective than an average of ",
            "Guide Dogs and helping with homelessness (", fmt_dc(dc_botec), ")")
   else "",
   "."
