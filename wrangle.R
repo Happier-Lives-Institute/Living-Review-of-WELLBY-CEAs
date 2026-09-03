@@ -1,5 +1,4 @@
 
-
 # Load the data
 living_review_data <- read_csv("data/gsheets/living_review_table.csv", col_types = cols(.default = "c"))
 
@@ -76,3 +75,31 @@ living_review_data <- living_review_data %>% filter(charity != "Royal National L
 
 # Save data because we are going to loop through it
 living_review_data_temp <- living_review_data
+
+#~############################################################################~#
+# Charity comparisons table ----
+#~############################################################################~#
+# A separate curated sheet, used for the evaluated charities figure
+
+charity_comparison_data <- read_csv(
+  "data/gsheets/charity_comparisons_table.csv", col_types = cols(.default = "c")
+)
+
+charity_comparison_data <- charity_comparison_data %>%
+  mutate(
+    CpWB  = as.numeric(gsub("[$,]", "", CpWB)),
+    WBp1k = as.numeric(gsub("[$,]", "", WBp1k)),
+    # Make a numeric depth equivalent
+    depth_of_analysis = case_when(
+      depth_of_analysis == "Shallow" ~ 1,
+      depth_of_analysis == "Medium" ~ 2,
+      depth_of_analysis == "In-depth" ~ 4,
+      TRUE ~ NA_real_
+    ),
+    # Create a charity label that has name and intervention
+    charity_label = ifelse(
+      !is.na(intervention),
+      paste0(charity, "\n[", intervention, "]"),
+      charity
+    )
+  )

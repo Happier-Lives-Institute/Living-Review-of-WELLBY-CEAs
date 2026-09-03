@@ -2,63 +2,6 @@
 # Preparations ----
 #~############################################################################~#
 
-# Output each analysis version into its own subfolder
-graph_dir <- file.path("graphs", current_settings$version)
-dir.create(graph_dir, showWarnings = FALSE, recursive = TRUE)
-
-# Evaluator colours
-evaluator_colours <- c(
-  "State of Life"             = "#F4C430"
-  , "Krekel and colleagues"   = "#CD5C5C"
-  , "Pro Bono Economics"      = "#73937e"
-  , "Happier Lives Institute" = "#2361b7"
-)
-
-# Create the charity labels
-living_review_data <- living_review_data %>%
-  mutate(
-    income_label = ifelse(
-      country_income_simple == "HICs",
-      "<span style='color:#0072B2'>(HIC)</span>",
-      "<span style='color:#E69F00'>(LMIC)</span>"
-    ),
-    charity_label = paste0(
-      "<b>",charity,"</b>",
-      " <span style='font-size:10pt'>[", intervention, "]</span> ", income_label
-    ),
-    charity_label_living = paste0(
-      charity, " ", income_label,
-      "<br><span style='font-size:10pt'>[", intervention, "]</span>"
-    ),
-    WBp1k_label = ifelse(
-      WBp1k < 1, paste0(" ", round_c(WBp1k, 2)),
-      paste0(" ", round_c(WBp1k, 1))
-    )
-  )
-
-living_review_data_in_sample <- living_review_data %>% 
-  filter(publication_status == "Published")
-
-# The most/least cost-effective charity is always taken from the published sample
-most_cost_effective_row <- living_review_data_in_sample %>%
-  slice_max(WBp1k, n = 1, with_ties = FALSE)
-least_cost_effective_row <- living_review_data_in_sample %>%
-  slice_min(WBp1k, n = 1, with_ties = FALSE)
-
-most_cost_effective_charity  <- most_cost_effective_row$charity
-least_cost_effective_charity <- least_cost_effective_row$charity
-
-# Labels for the two single-charity groups in the comparison plots.
-label_most  <- paste0("Most cost-effective charity\nin sample (", most_cost_effective_charity, ")")
-label_least <- paste0("Least cost-effective\ncharity in sample\n(", least_cost_effective_charity, ")")
-
-# Do we want svgs to have the same ratio
-svg_ratio_setting <- T
-
-#~============================================================================~=
-## Reusable plot elements ----
-#~============================================================================~=
-
 height_large_graphs <- max(75*nrow(living_review_data), 1750)
 
 # LMIC/HIC explanatory annotation
@@ -129,7 +72,6 @@ make_double <- function(p_cpwb, p_wbp1k) {
 p_WBp1k <- living_review_data %>%
   ggplot(aes(y = reorder(charity_label, WBp1k), x = WBp1k,
              color = evaluator,
-             size = depth_of_analysis_num,
   )) +
   geom_text(
     aes(label = WBp1k_label),
@@ -144,7 +86,7 @@ p_WBp1k <- living_review_data %>%
     aes(x = 0, xend = WBp1k, y = charity_label, yend = charity_label),
     linewidth = 1, show.legend = F
   ) +
-  geom_point() +
+  geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() +
   scale_alpha(range = c(0.5, 1), guide = "none") +
   ylab("") +
@@ -211,7 +153,6 @@ hli_double_save(
 p_CpWB <- living_review_data %>%
   ggplot(aes(y = reorder(charity_label, -CpWB), x = CpWB,
              color = evaluator,
-             size = depth_of_analysis_num,
   )) +
   geom_text(
     aes(label = scales::dollar_format()(CpWB)),
@@ -227,7 +168,7 @@ p_CpWB <- living_review_data %>%
     aes(x = 0, xend = CpWB, y = charity_label, yend = charity_label),
     linewidth = 1, show.legend = FALSE
   ) +
-  geom_point() +
+  geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() +
   scale_alpha(range = c(0.5, 1), guide = "none") +
   ylab("") +
@@ -310,7 +251,6 @@ p_CpWB_HIC <- living_review_data %>%
   filter(country_income_simple == "HICs") %>%
   ggplot(aes(y = reorder(charity_label, -CpWB), x = CpWB,
              color = evaluator,
-             size = depth_of_analysis_num,
   )) +
   geom_text(
     aes(label = scales::dollar_format()(CpWB)),
@@ -326,7 +266,7 @@ p_CpWB_HIC <- living_review_data %>%
     aes(x = 0, xend = CpWB, y = charity_label, yend = charity_label),
     linewidth = 1, show.legend = FALSE
   ) +
-  geom_point() +
+  geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() +
   scale_alpha(range = c(0.5, 1), guide = "none") +
   ylab("") +
@@ -552,83 +492,6 @@ hli_double_save(
 #~=======================================================~=
 ## Preparation ----
 #~=======================================================~=
-
-# Create comparison data based on version
-if(current_settings$version == "living_review") {
-
-  data_comparison <- rbind(
-    living_review_data %>% mutate(rank = rank(CpWB, ties.method = "first")) %>%
-      filter(rank < 6) %>% summarise(
-        charity = "Top 5 charities",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      ),
-    living_review_data %>% filter(charity == most_cost_effective_charity) %>%
-      select(charity, CpWB, WBp1k) %>% mutate(
-        charity = label_most
-      ),
-    living_review_data %>% filter(charity == least_cost_effective_charity) %>%
-      select(charity, CpWB, WBp1k) %>% mutate(
-        charity = label_least
-      ),
-    living_review_data %>%
-      filter(country_income_simple == "HICs") %>% summarise(
-        charity = "Charities operating in HICs (UK)",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      ),
-    living_review_data %>%
-      filter(country_income_simple == "LMICs") %>% summarise(
-        charity = "Charities operating in LMICs",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      )
-  ) %>% arrange(CpWB)
-
-} else if(current_settings$version %in% c("all", "only_add_typical_acts")) {
-
-  data_comparison <- rbind(
-    living_review_data %>% mutate(rank = rank(CpWB, ties.method = "first")) %>%
-      filter(rank < 6) %>% summarise(
-        charity = "Top 5 charities",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      ),
-    living_review_data %>% filter(charity == most_cost_effective_charity) %>%
-      select(charity, CpWB, WBp1k) %>% mutate(
-        charity = label_most
-      ),
-    living_review_data %>% filter(charity == least_cost_effective_charity) %>%
-      select(charity, CpWB, WBp1k) %>% mutate(
-        charity = label_least
-      ),
-    living_review_data %>%
-      filter(country_income_simple == "HICs" &
-               publication_status != "BOTEC for WHR chapter"
-      ) %>% summarise(
-        charity = "Charities operating in HICs (UK)\nnot counting Guide Dogs UK\nand homelessness BOTECS",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      ),
-    living_review_data %>%
-      filter(country_income_simple == "LMICs") %>% summarise(
-        charity = "Charities operating in LMICs",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      ),
-    living_review_data %>%
-      filter(publication_status == "BOTEC for WHR chapter") %>% summarise(
-        charity = "BOTECs of Guide Dogs UK\nand homelessness\nfor the WHR chapter",
-        CpWB = geom_mean(CpWB, na.rm = T),
-        WBp1k = geom_mean(WBp1k, na.rm = T)
-      )
-  ) %>% arrange(CpWB)
-}
-
-# Helper: pull a variable for the comparison group matching a (fixed) name pattern
-cmp <- function(pattern, var) {
-  data_comparison %>% filter(grepl(pattern, charity, fixed = TRUE)) %>% pull({{ var }})
-}
 
 arrow_length <- 0.02
 text_size <- 3.5

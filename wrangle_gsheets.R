@@ -2,14 +2,17 @@
 # Gsheets to csv ----
 #~############################################################################~#
 
-library(googlesheets4)
+# Load dependencies
+source("dependencies/dependencies.R")
 
 living_review_url <- "https://docs.google.com/spreadsheets/d/1qcNT4QXurBW52OKBBy8b4ty6YqppkTD9Xu-4Kq0JbwE/"
+url_comparisons   <- "https://docs.google.com/spreadsheets/d/1xMA664duSlM7CLhMOwFirBJw6k_c83cL-lcOXl06qPU/"
 
 gsheets <- list(
-  list(file = "living_review_table", sheet = "Living Review Table"),
-  list(file = "botecs_from_whr",     sheet = "BOTECs from the WHR"),
-  list(file = "other",               sheet = "Other")
+  list(file = "living_review_table",      ss = living_review_url, sheet = "Living Review Table"),
+  list(file = "botecs_from_whr",          ss = living_review_url, sheet = "BOTECs from the WHR"),
+  list(file = "other",                    ss = living_review_url, sheet = "Other"),
+  list(file = "charity_comparisons_table", ss = url_comparisons,  sheet = "Charity comparisons table")
 )
 
 out_dir <- "data/gsheets"
@@ -23,7 +26,7 @@ for (g in gsheets) {
 
   print(paste0("      Fetching ", g$sheet, "..."))
 
-  dat <- read_sheet(ss = living_review_url, sheet = g$sheet)
+  dat <- read_sheet(ss = g$ss, sheet = g$sheet)
 
   # A column holding more than one type comes back as a list, which write_csv
   # cannot take. as.character keeps the stored number, unlike col_types = "c"

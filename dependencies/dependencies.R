@@ -31,7 +31,13 @@ source("dependencies/functions_reporting.R")
 # Custom themes and styles
 source("dependencies/functions_styles.R")
 
+# Get geometric mean
 geom_mean <- function(x, na.rm = TRUE) {
   if (any(x <= 0, na.rm = TRUE)) stop("all values must be positive")
   exp(mean(log(x), na.rm = na.rm))
+}
+
+# pull a variable for the comparison group matching a (fixed) name pattern
+cmp <- function(pattern, var) {
+  data_comparison %>% filter(grepl(pattern, charity, fixed = TRUE)) %>% pull({{ var }})
 }

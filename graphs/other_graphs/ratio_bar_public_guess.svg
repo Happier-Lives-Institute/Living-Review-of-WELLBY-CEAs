@@ -1,0 +1,60 @@
+<svg role="img" aria-labelledby="ratio_bar_public_guess-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 432.00 252.00'><title id="ratio_bar_public_guess-title">Bar chart of what the general public thinks. Asked how much more cost-effective the best charity is than an average one, people guess 3 times.</title>
+<g class='svglite'>
+<defs>
+  <style type='text/css'>
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  </style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw0MzIuMDB8MC4wMHwyNTIuMDA='>
+    <rect x='0.00' y='0.00' width='432.00' height='252.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwyNTIuMDA=)'>
+<rect x='0.00' y='0.00' width='432.00' height='252.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMzcuNTV8NDI1LjAzfDYuOTd8MjA5LjE3'>
+    <rect x='37.55' y='6.97' width='387.48' height='202.20' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMzcuNTV8NDI1LjAzfDYuOTd8MjA5LjE3)'>
+<rect x='37.55' y='6.97' width='387.48' height='202.20' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='114.16' y='147.90' width='58.12' height='61.27' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A6CEE3;' />
+<rect x='290.29' y='25.36' width='58.12' height='183.82' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CAB2D6;' />
+<text x='140.50' y='138.67' style='font-size: 12.90px; font-family: "Arial";' textLength='13.62px' lengthAdjust='spacingAndGlyphs'>x1</text>
+<text x='316.63' y='16.13' style='font-size: 12.90px; font-family: "Arial";' textLength='13.62px' lengthAdjust='spacingAndGlyphs'>x3</text>
+</g>
+<g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwyNTIuMDA=)'>
+<polyline points='37.55,209.17 37.55,6.97 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<text x='31.07' y='213.42' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='31.07' y='152.15' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>1</text>
+<text x='31.07' y='90.88' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>2</text>
+<text x='31.07' y='29.60' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>3</text>
+<polyline points='34.06,209.17 37.55,209.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='34.06,147.90 37.55,147.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='34.06,86.63 37.55,86.63 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='34.06,25.36 37.55,25.36 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='37.55,209.17 425.03,209.17 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<polyline points='143.22,212.66 143.22,209.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='319.35,212.66 319.35,209.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='143.22' y='224.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='83.34px' lengthAdjust='spacingAndGlyphs'>Average charity</text>
+<text x='319.35' y='224.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='112.89px' lengthAdjust='spacingAndGlyphs'>General public guess</text>
+<text transform='translate(16.88,108.07) rotate(-90)' text-anchor='middle' style='font-size: 14.00px; font-family: "Avenir";' textLength='145.89px' lengthAdjust='spacingAndGlyphs'>Cost-effectiveness ratio</text>
+</g>
+</g>
+</svg>

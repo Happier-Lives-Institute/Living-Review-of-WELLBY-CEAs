@@ -1,0 +1,86 @@
+<svg role="img" aria-labelledby="ratio_bar-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 576.00 288.00'><title id="ratio_bar-title">Bar chart comparing estimates of how much better the best charity is than the average. The general public guesses 3 times; experts guess 100 times. HLI data shows 66 times (top 5 vs UK charities), 916 times (Pure Earth (Ghana) vs Football Beyond Borders), and up to 3222 times when extending beyond the sample. HLI's overall informed estimate is 1,000 times.</title>
+<g class='svglite'>
+<defs>
+  <style type='text/css'>
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  </style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1NzYuMDB8MC4wMHwyODguMDA='>
+    <rect x='0.00' y='0.00' width='576.00' height='288.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1NzYuMDB8MC4wMHwyODguMDA=)'>
+<rect x='0.00' y='0.00' width='576.00' height='288.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMTc4LjkyfDU2OS4wM3w2Ljk3fDI0NS4xNw=='>
+    <rect x='178.92' y='6.97' width='390.10' height='238.20' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTc4LjkyfDU2OS4wM3w2Ljk3fDI0NS4xNw==)'>
+<rect x='178.92' y='6.97' width='390.10' height='238.20' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='178.92' y='21.37' width='0.089' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A6CEE3;' />
+<rect x='178.92' y='54.45' width='0.27' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CAB2D6;' />
+<rect x='178.92' y='87.53' width='8.87' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #00ACC1;' />
+<rect x='178.92' y='120.61' width='5.85' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #FFA726;' />
+<rect x='178.92' y='153.70' width='81.21' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #29B6F6;' />
+<rect x='178.92' y='219.86' width='88.66' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #66BB6A;' />
+<rect x='178.92' y='186.78' width='285.66' height='10.92' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #AB47BC;' />
+<text x='181.74' y='31.44' style='font-size: 12.90px; font-family: "Arial";' textLength='13.62px' lengthAdjust='spacingAndGlyphs'>x1</text>
+<text x='181.91' y='64.52' style='font-size: 12.90px; font-family: "Arial";' textLength='13.62px' lengthAdjust='spacingAndGlyphs'>x3</text>
+<text x='193.38' y='97.61' style='font-size: 12.90px; font-family: "Arial";' textLength='27.97px' lengthAdjust='spacingAndGlyphs'>x100</text>
+<text x='188.93' y='130.69' style='font-size: 12.90px; font-family: "Arial";' textLength='20.80px' lengthAdjust='spacingAndGlyphs'>x66</text>
+<text x='265.73' y='163.77' style='font-size: 12.90px; font-family: "Arial";' textLength='27.97px' lengthAdjust='spacingAndGlyphs'>x916</text>
+<text x='274.61' y='229.94' style='font-size: 12.90px; font-family: "Arial";' textLength='35.14px' lengthAdjust='spacingAndGlyphs'>x1000</text>
+<text x='471.61' y='196.85' style='font-size: 12.90px; font-family: "Arial";' textLength='35.14px' lengthAdjust='spacingAndGlyphs'>x3222</text>
+</g>
+<g clip-path='url(#cpMC4wMHw1NzYuMDB8MC4wMHwyODguMDA=)'>
+<polyline points='178.92,245.17 178.92,6.97 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<text x='172.45' y='229.57' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='131.83px' lengthAdjust='spacingAndGlyphs'>HLI data-informed guess</text>
+<text x='172.45' y='190.01' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='121.00px' lengthAdjust='spacingAndGlyphs'>HLI data (Pure Earth vs</text>
+<text x='172.45' y='202.97' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='143.12px' lengthAdjust='spacingAndGlyphs'>extending beyond sample)</text>
+<text x='172.45' y='156.92' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='121.00px' lengthAdjust='spacingAndGlyphs'>HLI data (Pure Earth vs</text>
+<text x='172.45' y='169.88' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='136.66px' lengthAdjust='spacingAndGlyphs'>Football Beyond Borders)</text>
+<text x='172.45' y='123.84' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='114.83px' lengthAdjust='spacingAndGlyphs'>HLI data (Top 5 vs UK</text>
+<text x='172.45' y='136.80' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='47.31px' lengthAdjust='spacingAndGlyphs'>charities)</text>
+<text x='172.45' y='97.24' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='148.05px' lengthAdjust='spacingAndGlyphs'>Expert guess (Caviola et al.)</text>
+<text x='172.45' y='57.67' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='112.89px' lengthAdjust='spacingAndGlyphs'>General public guess</text>
+<text x='172.45' y='70.63' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='64.25px' lengthAdjust='spacingAndGlyphs'>(HLI/Prolific)</text>
+<text x='172.45' y='31.07' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='83.34px' lengthAdjust='spacingAndGlyphs'>Average charity</text>
+<polyline points='175.44,225.32 178.92,225.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='175.44,192.24 178.92,192.24 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='175.44,159.16 178.92,159.16 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='175.44,126.07 178.92,126.07 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='175.44,92.99 178.92,92.99 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='175.44,59.91 178.92,59.91 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='175.44,26.82 178.92,26.82 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='178.92,245.17 569.03,245.17 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<polyline points='178.92,248.66 178.92,245.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='267.58,248.66 267.58,245.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='356.24,248.66 356.24,245.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='444.90,248.66 444.90,245.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='533.56,248.66 533.56,245.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='178.92' y='260.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='267.58' y='260.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>1000</text>
+<text x='356.24' y='260.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>2000</text>
+<text x='444.90' y='260.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>3000</text>
+<text x='533.56' y='260.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>4000</text>
+<text x='373.97' y='276.99' text-anchor='middle' style='font-size: 14.00px; font-family: "Avenir";' textLength='145.89px' lengthAdjust='spacingAndGlyphs'>Cost-effectiveness ratio</text>
+</g>
+</g>
+</svg>

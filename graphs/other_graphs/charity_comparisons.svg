@@ -1,0 +1,141 @@
+<svg role="img" aria-labelledby="charity_comparisons-title" xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='100%' viewBox='0 0 720.00 360.00'><title id="charity_comparisons-title">Dot plot of 9 charities evaluated by HLI, ranked by WELLBYs created per $1,000 donated. Pure Earth leads at 105.4, followed by Taimaka (66.0), Friendship Bench (48.5), and StrongMinds (40.4). GiveDirectly, the cash transfer benchmark, scores 7.6.</title>
+<g class='svglite'>
+<defs>
+  <style type='text/css'>
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  
+    a text {
+      fill: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    a text:hover {
+      fill: darkblue;
+      text-decoration: underline;
+    }
+  </style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw3MjAuMDB8MC4wMHwzNjAuMDA='>
+    <rect x='0.00' y='0.00' width='720.00' height='360.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHwzNjAuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='360.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='217.15' y='6.97' width='495.87' height='312.93' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<text x='644.90' y='31.45' style='font-size: 11.38px; font-family: "Arial";' textLength='37.95px' lengthAdjust='spacingAndGlyphs'> 105.43</text>
+<text x='491.51' y='65.47' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 66.00</text>
+<text x='430.75' y='99.48' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 50.12</text>
+<text x='424.63' y='133.50' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 48.52</text>
+<text x='393.45' y='167.51' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 40.37</text>
+<text x='379.19' y='201.52' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 36.64</text>
+<text x='364.97' y='235.54' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 32.93</text>
+<text x='321.82' y='269.55' style='font-size: 11.38px; font-family: "Arial";' textLength='31.62px' lengthAdjust='spacingAndGlyphs'> 21.65</text>
+<text x='265.35' y='303.56' style='font-size: 11.38px; font-family: "Arial";' textLength='25.30px' lengthAdjust='spacingAndGlyphs'> 7.55</text>
+<line x1='226.34' y1='27.38' x2='629.72' y2='27.38' style='stroke-width: 2.13; stroke: #FC9736; stroke-linecap: butt;' />
+<line x1='226.34' y1='61.40' x2='478.86' y2='61.40' style='stroke-width: 2.13; stroke: #FC9736; stroke-linecap: butt;' />
+<line x1='226.34' y1='95.41' x2='418.10' y2='95.41' style='stroke-width: 2.13; stroke: #FFE655; stroke-linecap: butt;' />
+<line x1='226.34' y1='129.42' x2='411.98' y2='129.42' style='stroke-width: 2.13; stroke: #1C5FB8; stroke-linecap: butt;' />
+<line x1='226.34' y1='163.44' x2='380.80' y2='163.44' style='stroke-width: 2.13; stroke: #1C5FB8; stroke-linecap: butt;' />
+<line x1='226.34' y1='197.45' x2='366.54' y2='197.45' style='stroke-width: 2.13; stroke: #FFE655; stroke-linecap: butt;' />
+<line x1='226.34' y1='231.47' x2='352.32' y2='231.47' style='stroke-width: 2.13; stroke: #FFE655; stroke-linecap: butt;' />
+<line x1='226.34' y1='265.48' x2='309.17' y2='265.48' style='stroke-width: 2.13; stroke: #B4C3CB; stroke-linecap: butt;' />
+<line x1='226.34' y1='299.49' x2='255.24' y2='299.49' style='stroke-width: 2.13; stroke: #B4C3CB; stroke-linecap: butt;' />
+<circle cx='629.72' cy='27.38' r='4.60' style='stroke-width: 0.90; stroke: #FC9736; fill: #FC9736;' />
+<circle cx='478.86' cy='61.40' r='4.60' style='stroke-width: 0.90; stroke: #FC9736; fill: #FC9736;' />
+<circle cx='418.10' cy='95.41' r='4.60' style='stroke-width: 0.90; stroke: #FFE655; fill: #FFE655;' />
+<circle cx='411.98' cy='129.42' r='6.85' style='stroke-width: 0.90; stroke: #1C5FB8; fill: #1C5FB8;' />
+<circle cx='380.80' cy='163.44' r='6.85' style='stroke-width: 0.90; stroke: #1C5FB8; fill: #1C5FB8;' />
+<circle cx='366.54' cy='197.45' r='1.52' style='stroke-width: 0.90; stroke: #FFE655; fill: #FFE655;' />
+<circle cx='352.32' cy='231.47' r='1.52' style='stroke-width: 0.90; stroke: #FFE655; fill: #FFE655;' />
+<circle cx='309.17' cy='265.48' r='4.60' style='stroke-width: 0.90; stroke: #B4C3CB; fill: #B4C3CB;' />
+<circle cx='255.24' cy='299.49' r='6.85' style='stroke-width: 0.90; stroke: #B4C3CB; fill: #B4C3CB;' />
+<polyline points='217.15,319.90 217.15,6.97 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<a xlink:href="https://www.happierlivesinstitute.org/givedirectly-comprehensive-summary/" target="_blank"><text x='210.68' y='297.49' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='59.28px' lengthAdjust='spacingAndGlyphs'>GiveDirectly</text></a>
+<text x='210.68' y='309.37' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='77.69px' lengthAdjust='spacingAndGlyphs'>[Cash transfers]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/fortify-health-summary/" target="_blank"><text x='210.68' y='263.48' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='65.44px' lengthAdjust='spacingAndGlyphs'>Fortify Health</text></a>
+<text x='210.68' y='275.36' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='152.31px' lengthAdjust='spacingAndGlyphs'>[Fortifying wheat flour with iron]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/the-wellbeing-cost-effectiveness-of-the-shamiri-institute/" target="_blank"><text x='210.68' y='229.46' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='37.28px' lengthAdjust='spacingAndGlyphs'>Shamiri</text></a>
+<text x='210.68' y='241.34' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='78.94px' lengthAdjust='spacingAndGlyphs'>[Psychotherapy]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/the-promise-of-actra-preventing-crime-with-cognitive-behavioural-therapy/" target="_blank"><text x='210.68' y='195.45' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='37.28px' lengthAdjust='spacingAndGlyphs'>ACTRA</text></a>
+<text x='210.68' y='207.33' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='106.83px' lengthAdjust='spacingAndGlyphs'>[CBT to reduce crime]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/strongminds-comprehensive-summary/" target="_blank"><text x='210.68' y='161.44' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='61.78px' lengthAdjust='spacingAndGlyphs'>StrongMinds</text></a>
+<text x='210.68' y='173.32' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='78.94px' lengthAdjust='spacingAndGlyphs'>[Psychotherapy]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/friendship-bench-comprehensive-summary/" target="_blank"><text x='210.68' y='127.42' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='85.66px' lengthAdjust='spacingAndGlyphs'>Friendship Bench</text></a>
+<text x='210.68' y='139.30' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='78.94px' lengthAdjust='spacingAndGlyphs'>[Psychotherapy]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/reach-up-summary/" target="_blank"><text x='210.68' y='99.35' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='133.39px' lengthAdjust='spacingAndGlyphs'>Parenting charities / Icddr,b</text></a>
+<a xlink:href="https://www.happierlivesinstitute.org/taimaka-summary/" target="_blank"><text x='210.68' y='59.39' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='40.97px' lengthAdjust='spacingAndGlyphs'>Taimaka</text></a>
+<text x='210.68' y='71.27' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='136.03px' lengthAdjust='spacingAndGlyphs'>[Treating acute malnutrition]</text>
+<a xlink:href="https://www.happierlivesinstitute.org/pure-earth-summary/" target="_blank"><text x='210.68' y='25.38' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='96.06px' lengthAdjust='spacingAndGlyphs'>Pure Earth (Ghana)</text></a>
+<text x='210.68' y='37.26' text-anchor='end' style='font-size: 11.00px; font-family: "Arial";' textLength='187.25px' lengthAdjust='spacingAndGlyphs'>[Advocacy for reducing lead exposure]</text>
+<polyline points='213.67,299.49 217.15,299.49 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,265.48 217.15,265.48 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,231.47 217.15,231.47 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,197.45 217.15,197.45 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,163.44 217.15,163.44 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,129.42 217.15,129.42 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,95.41 217.15,95.41 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,61.40 217.15,61.40 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='213.67,27.38 217.15,27.38 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='217.15,319.90 713.03,319.90 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<polyline points='226.34,323.39 226.34,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='264.60,323.39 264.60,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='302.86,323.39 302.86,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='341.12,323.39 341.12,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='379.38,323.39 379.38,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='417.65,323.39 417.65,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='455.91,323.39 455.91,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='494.17,323.39 494.17,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='532.43,323.39 532.43,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='570.69,323.39 570.69,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='608.95,323.39 608.95,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='647.22,323.39 647.22,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='685.48,323.39 685.48,319.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='226.34' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='6.12px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='264.60' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='302.86' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='341.12' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>30</text>
+<text x='379.38' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>40</text>
+<text x='417.65' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text x='455.91' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>60</text>
+<text x='494.17' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>70</text>
+<text x='532.43' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>80</text>
+<text x='570.69' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='12.25px' lengthAdjust='spacingAndGlyphs'>90</text>
+<text x='608.95' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='18.38px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='647.22' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='17.56px' lengthAdjust='spacingAndGlyphs'>110</text>
+<text x='685.48' y='334.25' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='18.38px' lengthAdjust='spacingAndGlyphs'>120</text>
+<text x='465.09' y='350.08' text-anchor='middle' style='font-size: 14.00px; font-family: "Arial";' textLength='239.64px' lengthAdjust='spacingAndGlyphs'>WELLBYs created per $1,000 donated</text>
+<rect x='511.69' y='113.07' width='157.79' height='163.33' style='stroke-width: 0.75; fill: #FFFFFF;' />
+<text x='514.68' y='125.09' style='font-size: 11.00px; font-family: "Arial";' textLength='111.94px' lengthAdjust='spacingAndGlyphs'>Recommendation level</text>
+<circle cx='522.35' cy='140.90' r='5.79' style='stroke-width: 0.90; stroke: #1C5FB8; fill: #1C5FB8;' />
+<circle cx='522.35' cy='156.24' r='5.79' style='stroke-width: 0.90; stroke: #FC9736; fill: #FC9736;' />
+<circle cx='522.35' cy='171.58' r='5.79' style='stroke-width: 0.90; stroke: #FFE655; fill: #FFE655;' />
+<circle cx='522.35' cy='186.92' r='5.79' style='stroke-width: 0.90; stroke: #B4C3CB; fill: #B4C3CB;' />
+<text x='536.99' y='144.48' style='font-size: 10.00px; font-family: "Arial";' textLength='50.58px' lengthAdjust='spacingAndGlyphs'>Top Charity</text>
+<text x='536.99' y='159.82' style='font-size: 10.00px; font-family: "Arial";' textLength='78.91px' lengthAdjust='spacingAndGlyphs'>Promising Charity</text>
+<text x='536.99' y='175.16' style='font-size: 10.00px; font-family: "Arial";' textLength='90.06px' lengthAdjust='spacingAndGlyphs'>Honourable Mention</text>
+<text x='536.99' y='190.51' style='font-size: 10.00px; font-family: "Arial";' textLength='129.50px' lengthAdjust='spacingAndGlyphs'>Not Currently Recommended</text>
+<text x='514.68' y='217.58' style='font-size: 11.00px; font-family: "Arial";' textLength='84.44px' lengthAdjust='spacingAndGlyphs'>Depth of analysis</text>
+<circle cx='523.18' cy='233.38' r='1.52' style='stroke-width: 0.90; fill: #000000;' />
+<circle cx='523.18' cy='248.73' r='4.60' style='stroke-width: 0.90; fill: #000000;' />
+<circle cx='523.18' cy='264.90' r='6.85' style='stroke-width: 0.90; fill: #000000;' />
+<text x='538.66' y='236.96' style='font-size: 10.00px; font-family: "Arial";' textLength='35.02px' lengthAdjust='spacingAndGlyphs'>Shallow</text>
+<text x='538.66' y='252.31' style='font-size: 10.00px; font-family: "Arial";' textLength='35.56px' lengthAdjust='spacingAndGlyphs'>Medium</text>
+<text x='538.66' y='268.48' style='font-size: 10.00px; font-family: "Arial";' textLength='36.70px' lengthAdjust='spacingAndGlyphs'>In-depth</text>
+</g>
+</g>
+</svg>
