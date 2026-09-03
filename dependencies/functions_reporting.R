@@ -1,0 +1,294 @@
+# Functions to helps us read, write, and report answers.
+
+# Round number to string, fills in missing digits (decimals) with 0s
+round_c <- function(x, digits = 2) {
+  formatC(x, format="f", digits=digits)
+}
+
+# Round number to string with % in front
+round_per <- function(x, digits = 2) {
+  format_string <- paste0("%.", digits, "f%%")
+  percent_string <- sprintf(format_string, x * 100)
+  return(percent_string)
+}
+
+# Get per
+get_per_rounded <- function(n, N, digits = 2) {
+  per <- (n / N)
+  per_rounded <- round_per(per, digits = digits)
+  return(per_rounded)
+}
+
+# Function to easily write a confidence interval string
+present_with_CI <- function(estimate, lower, upper, per = "95%", show_per = T) {
+  ci_str <- if (show_per) {
+    sprintf("(%s CI: % .2f, % .2f)", per, lower, upper)
+  } else {
+    sprintf("(% .2f, % .2f)", lower, upper)
+  }
+
+  if (is.na(estimate)) {
+    if (is.na(lower) | is.na(upper)) NA else ci_str
+  } else if (is.na(lower) | is.na(upper)) {
+    sprintf("% .2f", estimate)
+  } else {
+    sprintf("% .2f %s", estimate, ci_str)
+  }
+}
+
+# Function to report a distribution #
+MMSDCI.vec <- function(x, ci = .95) {
+  alpha <- (1 - ci) / 2
+  q <- quantile(x, probs = c(alpha, 1 - alpha), na.rm = TRUE)
+
+  paste0(
+    "M = ",        round_c(mean(x,   na.rm = TRUE), 2),
+    ", SD = ",     round_c(sd(x,     na.rm = TRUE), 2),
+    ", Median = ", round_c(median(x, na.rm = TRUE), 2),
+    ", (", ci * 100, "% CI: ", round_c(q[[1]], 2), ", ", round_c(q[[2]], 2), ")"
+  )
+}
+
+MMSDCI <- function(x, ci = .95) {
+  if (is.data.frame(x)) {
+    x <- dplyr::select(x, where(is.numeric))
+    lapply(x, MMSDCI.vec, ci = ci)
+  } else {
+    MMSDCI.vec(x, ci = ci)
+  }
+}
+
+# Combine PE and SIM
+combine_PE_SIM <- function(pe, sim, ci = .95){
+  
+  # Get the upper and lower quantiles
+  CI.low <- (1 - ci)/2
+  CI.upp <- ci + CI.low
+  
+  # Prepare the new dataframe where each row is a variable
+  # And we will have a pe, ci, and combined, column
+  df <- pe %>% pivot_longer(
+    cols = everything(),
+    names_to = "variable",
+    values_to = "pe"
+  )
+  
+  # Get the CI for each variable
+  df$ci_lower <- NA
+  df$ci_upper <- NA
+  df$new_ci   <- NA
+  for (variable in df$variable) {
+    lower  <- quantile(as.data.frame(sim)[,variable], 
+                       probs = c(CI.low, CI.upp), na.rm = T)[[1]]
+    upper  <- quantile(as.data.frame(sim)[,variable], 
+                       probs = c(CI.low, CI.upp), na.rm = T)[[2]]
+    new_ci <- sprintf("(%i%s CI: % .2f, % .2f)", (ci * 100), "%", lower, upper)
+    # if(new_ci == "(95% CI:  NA,  NA)") {new_ci <- ""}}
+    df$ci_lower[which(df$variable == variable)] <- lower
+    df$ci_upper[which(df$variable == variable)] <- upper
+    df$new_ci[which(df$variable == variable)] <- new_ci
+  }
+  
+  # Copy into one string, for ease fo copy pasting
+  df <- df %>% rowwise() %>% 
+    mutate(combined = sprintf("% .2f %s", pe, new_ci)) %>% 
+    ungroup()
+  
+  return(df)
+}
+
+# A function to format p values like it is common to report them
+format_p_value <- function(p_value, include_p = T) {
+  p_prefix <- if (include_p) "p " else ""
+  p_equals <- if (include_p) "p = " else ""
+  
+  if (p_value < 0.001) {
+    return(paste0(p_prefix, "< .001"))
+  } else {
+    formatted_p <- formatC(p_value, format = "f", digits = 3)
+    return(paste0(p_equals, sub("^0\\.", ".", formatted_p)))
+  }
+}
+
+# Get sig star
+get_sig_star <- function(p_value) {
+  if (p_value < 0.001) {
+    return("***")
+  } else if (p_value < 0.01) {
+    return("**")
+  } else if (p_value < 0.05) {
+    return("*")
+  } else {
+    return("")
+  }
+}
+
+# A function for lineseparations in rmd kableExtra tables
+generate_linesep <- function(
+    table, 
+    spacing_rows, # a frequency
+    spacing_command = "\\addlinespace",
+    line_rows = c(), # a vector
+    line_command = "\\specialrule{0.5pt}{0.75em}{0.75em}"
+) {
+  # Initialize an empty vector
+  linesep_vec <- rep("", nrow(table))
+  
+  # Insert "\\addlinespace" (or other specified) at the specified frequency
+  linesep_vec[seq(spacing_rows, nrow(table), by = spacing_rows)] <- spacing_command
+  
+  # Add special lines at the specified rows
+  linesep_vec[line_rows] <- line_command
+  
+  return(linesep_vec)
+}
+
+# Function to get the total effect with all the flexible methods we've used up to now
+get_total_effect <- function(
+    initial_centre, # mean
+    initial_spread, # se
+    initial_ll = -Inf, # lower limit
+    initial_ul = +Inf, # upper limit
+    trajectory_centre, # mean
+    trajectory_spread, # se
+    trajectory_ll = -Inf, # lower limit
+    trajectory_ul = +Inf, # upper limit
+    duration, # either individual_0, overall_0, or a value
+    WELLBY_conversion_rate = 1, # rate at which SDs are converted to WELLBYs
+    simulations, # number of simulations
+    illustration_fraction = 1, # fraction of simulations to take for graph
+    seed = NULL # seed for simulations
+) {
+  
+  # Run a potential seed
+  if(!is.null(seed)){set.seed(seed)}
+  
+  ## Prepare the first elements
+  total_effect_pe <- tibble(
+    initial = initial_centre,
+    trajectory = trajectory_centre
+  )
+  
+  total_effect_sim <- tibble(
+    initial = msm::rtnorm(
+      n = simulations,
+      mean = initial_centre,
+      sd = initial_spread,
+      lower = initial_ll,
+      upper = initial_ul
+    ),
+    trajectory = msm::rtnorm(
+      n = simulations,
+      mean = trajectory_centre,
+      sd = trajectory_spread,
+      lower = trajectory_ll,
+      upper = trajectory_ul
+    )
+  )
+  
+  ## Set the duration
+  # If each simulation gets its own individual duration
+  if(duration == "individual_0") {
+    total_effect_pe <- total_effect_pe %>% mutate(
+      duration = abs(initial/trajectory)
+    )
+    
+    total_effect_sim <- total_effect_sim %>% mutate(
+      duration = abs(initial/trajectory)
+    )
+  } else {
+    # If the duration is set to a certain value
+    # If it is set to when the point estimates reach 0
+    if(duration == "overall_0") {
+      duration_value = abs(initial_centre/trajectory_centre)
+    } else {
+      # otherwise set to value of the user
+      duration_value = duration
+    }
+    
+    total_effect_pe <- total_effect_pe %>% mutate(
+      duration = duration_value
+    )
+    total_effect_sim <- total_effect_sim %>% mutate(
+      duration = duration_value
+    )
+  }
+  
+  ## Calculate the total effect
+  total_effect_pe <- total_effect_pe %>% rowwise() %>% mutate(
+    total_effect = pracma::integral(function(t) {initial + trajectory * t}, 
+                                    0, duration),
+    total_effect_wellbys = total_effect*WELLBY_conversion_rate
+  ) %>% ungroup()
+  
+  total_effect_sim <- total_effect_sim %>% rowwise() %>% mutate(
+    total_effect = pracma::integral(function(t) {initial + trajectory * t}, 
+                                    0, duration),
+    total_effect_wellbys = total_effect*WELLBY_conversion_rate
+  ) %>% ungroup()
+  
+  ## Combine the two
+  total_effect_combined <- combine_PE_SIM(total_effect_pe, total_effect_sim)
+  
+  ## Make illustration graph
+  
+  # Make graph
+  total_effect_graph <- total_effect_sim %>% 
+    sample_frac(illustration_fraction) %>% 
+    mutate(
+      id = 1:(simulations*illustration_fraction),
+      end_effect = initial+trajectory*duration
+    ) %>% ggplot() +
+    geom_hline(yintercept = 0, linetype=2)+
+    geom_segment(aes(
+      x=0, xend=duration,
+      y=initial, yend=end_effect
+    ), alpha=0.25, color="#3167b4") +
+    geom_segment(aes(
+      x=0, xend=total_effect_pe$duration,
+      y=total_effect_pe$initial, 
+      yend=total_effect_pe$initial+
+        total_effect_pe$trajectory*total_effect_pe$duration
+    ), alpha=1, linewidth=1, color="orange") +
+    theme_cowplot() +
+    ylab("effect") + xlab("time")
+  
+  return(
+    list(
+      total_effect_pe       = total_effect_pe,
+      total_effect_sim      = total_effect_sim,
+      total_effect_combined = total_effect_combined,
+      total_effect_graph    = total_effect_graph
+    )
+  )
+}
+
+save_docx_if_changed <- function(path, ..., pr_section = NULL) {
+  # Drop any tables that were not built for this analysis
+  tables <- Filter(Negate(is.null), list(...))
+  new_hash <- digest::digest(tables, algo = "md5")
+  hash_path <- paste0(path, ".hash")
+  old_hash  <- if (file.exists(hash_path)) readLines(hash_path, warn = FALSE) else ""
+  if (new_hash == old_hash) {
+    message("No changes detected, skipping: ", path)
+    return(invisible(NULL))
+  }
+  if (is.null(pr_section)) {
+    do.call(save_as_docx, c(tables, list(path = path)))
+  } else {
+    do.call(save_as_docx, c(tables, list(path = path, pr_section = pr_section)))
+  }
+  writeLines(new_hash, hash_path)
+  message("Written: ", path)
+}
+
+# Define function to escape LaTeX special characters
+escape_latex <- function(x) {
+  x <- gsub("%", "\\\\%", x)
+  x <- gsub("_", "\\\\_", x)
+  x <- gsub("&", "\\\\&", x)
+  x <- gsub("#", "\\\\#", x)
+  x <- gsub("\\$", "\\\\$", x)
+  # Add more special characters here if necessary
+  return(x)
+}

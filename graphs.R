@@ -52,6 +52,9 @@ least_cost_effective_charity <- least_cost_effective_row$charity
 label_most  <- paste0("Most cost-effective charity\nin sample (", most_cost_effective_charity, ")")
 label_least <- paste0("Least cost-effective\ncharity in sample\n(", least_cost_effective_charity, ")")
 
+# Do we want svgs to have the same ratio
+svg_ratio_setting <- T
+
 #~============================================================================~=
 ## Reusable plot elements ----
 #~============================================================================~=
@@ -197,7 +200,7 @@ hli_double_save(
   height = height_large_graphs,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = title_WBp1k
 )
 
@@ -278,7 +281,7 @@ hli_double_save(
   height = height_large_graphs,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = title_CpWB
 )
 
@@ -295,7 +298,7 @@ hli_double_save(
   height = height_large_graphs,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = paste(title_CpWB, title_WBp1k)
 )
 
@@ -347,7 +350,7 @@ hli_double_save(
   height = 1500,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T
+  set_svg_same_ratio = svg_ratio_setting
 )
 
 #~############################################################################~#
@@ -452,7 +455,7 @@ hli_double_save(
   height = 3*300,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = title_evaluators_CpWB
 )
 
@@ -521,7 +524,7 @@ hli_double_save(
   height = 3*300,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = title_evaluators_WBp1k
 )
 
@@ -538,7 +541,7 @@ hli_double_save(
   height = 3*300,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = paste(title_evaluators_CpWB, title_evaluators_WBp1k)
 )
 
@@ -857,7 +860,7 @@ hli_double_save(
   height = current_settings$comparison_height,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = title_comparison_CpWB
 )
 
@@ -1082,7 +1085,7 @@ hli_double_save(
   height = current_settings$comparison_height,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = title_comparison_WBp1k
 )
 
@@ -1099,6 +1102,6 @@ hli_double_save(
   height = current_settings$comparison_height,
   units = "px",
   dpi = 300,
-  set_svg_same_ratio = T,
+  set_svg_same_ratio = svg_ratio_setting,
   svg_title = paste(title_comparison_CpWB, title_comparison_WBp1k)
 )

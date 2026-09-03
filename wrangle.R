@@ -1,22 +1,21 @@
 
-living_review_url <- "https://docs.google.com/spreadsheets/d/1qcNT4QXurBW52OKBBy8b4ty6YqppkTD9Xu-4Kq0JbwE/"
 
 # Load the data
-living_review_data <- read_sheet(living_review_url, sheet = "Living Review Table")
+living_review_data <- read_csv("data/gsheets/living_review_table.csv", col_types = cols(.default = "c"))
 
 # Get BOTEC/Unpublished living review data
-living_review_data_botecs <- read_sheet(living_review_url, sheet = "BOTECs from the WHR")
+living_review_data_botecs <- read_csv("data/gsheets/botecs_from_whr.csv", col_types = cols(.default = "c"))
 
 # Other studies
-living_review_data_other <- read_sheet(living_review_url, sheet = "Other")
+living_review_data_other <- read_csv("data/gsheets/other.csv", col_types = cols(.default = "c"))
+
+living_review_data <- bind_rows(living_review_data, living_review_data_botecs) %>%
+  bind_rows(living_review_data_other)
 
 # Fix variables with strings in numeric
-living_review_data$`Cost per WELLBY` <- map_dbl(living_review_data$`Cost per WELLBY`, ~ as.numeric(.x))
-living_review_data$`WELLBYs created per $1,000 donated` <- map_dbl(living_review_data$`WELLBYs created per $1,000 donated`, ~ as.numeric(.x))
-living_review_data_other$`Duration of effect (years)` <- as.list(living_review_data_other$`Duration of effect (years)`)
-
-living_review_data <- bind_rows(living_review_data, living_review_data_botecs) %>% 
-  bind_rows(living_review_data_other)
+# gsub because the cells are currency formatted, e.g. $4,838.71
+living_review_data$`Cost per WELLBY` <- as.numeric(gsub("[$,]", "", living_review_data$`Cost per WELLBY`))
+living_review_data$`WELLBYs created per $1,000 donated` <- as.numeric(gsub("[$,]", "", living_review_data$`WELLBYs created per $1,000 donated`))
 
 # Clean the names
 living_review_data <- living_review_data %>%

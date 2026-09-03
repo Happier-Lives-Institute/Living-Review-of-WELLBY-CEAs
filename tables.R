@@ -49,4 +49,4 @@ ft <- flextable(table_data) %>%
   fontsize(size = 8, part = "all")
 
 # Save to Word
-save_as_docx(ft, path = file.path(graph_dir, "table.docx"))
+save_docx_if_changed(file.path(graph_dir, "table.docx"), ft)
