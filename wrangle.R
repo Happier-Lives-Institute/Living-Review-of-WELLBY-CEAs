@@ -33,6 +33,7 @@ living_review_data <- living_review_data %>%
     evaluator = `Evaluator`,
     intervention = `What the charity does`,
     dosage = `Dosage`,
+    report_url = `Report URL`,
     recommendation = `HLI recommendation`
   )
 
@@ -41,7 +42,8 @@ living_review_data <- living_review_data %>%
   select(
     charity, intervention, CpWB, WBp1k, duration, country_income,
     total_sample, total_studies, causal_evidence, evidence_relevance,
-    depth_of_analysis, publication_status, evaluator, recommendation
+    depth_of_analysis, publication_status, evaluator, recommendation,
+    report_url
   )
 
 # General wrangling of variables

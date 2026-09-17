@@ -16,6 +16,22 @@
       fill: inherit;
       stroke: none;
     }
+  
+    a text {
+      fill: blue;
+      cursor: pointer;
+    }
+    .svglite line.hli-link-underline {
+      stroke: blue;
+      stroke-linecap: butt;
+      cursor: pointer;
+    }
+    a:hover text {
+      fill: darkblue;
+    }
+    .svglite a:hover line.hli-link-underline {
+      stroke: darkblue;
+    }
   </style>
 </defs>
 <rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
@@ -115,18 +131,18 @@
 <circle cx='418.98' cy='430.78' r='1.52' style='stroke-width: 0.90; stroke: #B4C3CB; fill: #B4C3CB;' />
 <circle cx='418.93' cy='448.01' r='1.52' style='stroke-width: 0.90; stroke: #B4C3CB; fill: #B4C3CB;' />
 <circle cx='418.92' cy='465.24' r='1.52' style='stroke-width: 0.90; stroke: #B4C3CB; fill: #B4C3CB;' />
-<text x='549.66' y='380.12' style='font-size: 8.00px;fill: #E69F00; font-family: "Avenir";' textLength='23.02px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='575.83' y='380.12' style='font-size: 11.38px; font-family: "Avenir";' textLength='44.67px' lengthAdjust='spacingAndGlyphs'>operates</text>
-<text x='623.66' y='380.12' style='font-size: 11.38px; font-family: "Avenir";' textLength='9.06px' lengthAdjust='spacingAndGlyphs'>in</text>
-<text x='635.88' y='380.12' style='font-size: 11.38px; font-family: "Avenir";' textLength='21.48px' lengthAdjust='spacingAndGlyphs'>low-</text>
-<text x='660.52' y='380.12' style='font-size: 11.38px; font-family: "Avenir";' textLength='10.53px' lengthAdjust='spacingAndGlyphs'>or</text>
-<text x='549.66' y='393.72' style='font-size: 11.38px; font-family: "Avenir";' textLength='76.48px' lengthAdjust='spacingAndGlyphs'>middle-income</text>
-<text x='629.30' y='393.72' style='font-size: 11.38px; font-family: "Avenir";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>countries</text>
-<text x='549.66' y='420.93' style='font-size: 8.00px;fill: #0072B2; font-family: "Avenir";' textLength='17.67px' lengthAdjust='spacingAndGlyphs'>(HIC)</text>
-<text x='570.48' y='420.93' style='font-size: 11.38px; font-family: "Avenir";' textLength='44.67px' lengthAdjust='spacingAndGlyphs'>operates</text>
-<text x='618.31' y='420.93' style='font-size: 11.38px; font-family: "Avenir";' textLength='9.06px' lengthAdjust='spacingAndGlyphs'>in</text>
-<text x='549.66' y='434.54' style='font-size: 11.38px; font-family: "Avenir";' textLength='63.44px' lengthAdjust='spacingAndGlyphs'>high-income</text>
-<text x='616.25' y='434.54' style='font-size: 11.38px; font-family: "Avenir";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>countries</text>
+<text x='549.66' y='392.18' style='font-size: 8.00px;fill: #E69F00; font-family: "Avenir";' textLength='23.02px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
+<text x='575.83' y='392.18' style='font-size: 11.38px; font-family: "Avenir";' textLength='44.67px' lengthAdjust='spacingAndGlyphs'>operates</text>
+<text x='623.66' y='392.18' style='font-size: 11.38px; font-family: "Avenir";' textLength='9.06px' lengthAdjust='spacingAndGlyphs'>in</text>
+<text x='635.88' y='392.18' style='font-size: 11.38px; font-family: "Avenir";' textLength='21.48px' lengthAdjust='spacingAndGlyphs'>low-</text>
+<text x='660.52' y='392.18' style='font-size: 11.38px; font-family: "Avenir";' textLength='10.53px' lengthAdjust='spacingAndGlyphs'>or</text>
+<text x='549.66' y='405.78' style='font-size: 11.38px; font-family: "Avenir";' textLength='76.48px' lengthAdjust='spacingAndGlyphs'>middle-income</text>
+<text x='629.30' y='405.78' style='font-size: 11.38px; font-family: "Avenir";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>countries</text>
+<text x='549.66' y='432.99' style='font-size: 8.00px;fill: #0072B2; font-family: "Avenir";' textLength='17.67px' lengthAdjust='spacingAndGlyphs'>(HIC)</text>
+<text x='570.48' y='432.99' style='font-size: 11.38px; font-family: "Avenir";' textLength='44.67px' lengthAdjust='spacingAndGlyphs'>operates</text>
+<text x='618.31' y='432.99' style='font-size: 11.38px; font-family: "Avenir";' textLength='9.06px' lengthAdjust='spacingAndGlyphs'>in</text>
+<text x='549.66' y='446.60' style='font-size: 11.38px; font-family: "Avenir";' textLength='63.44px' lengthAdjust='spacingAndGlyphs'>high-income</text>
+<text x='616.25' y='446.60' style='font-size: 11.38px; font-family: "Avenir";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>countries</text>
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1MTguNDA=)'>
 <polyline points='413.31,475.57 413.31,6.97 ' style='stroke-width: 1.07; stroke-linecap: square;' />
@@ -242,7 +258,7 @@
 <text x='277.29' y='209.34' style='font-size: 10.00px; font-family: "Avenir";' textLength='54.27px' lengthAdjust='spacingAndGlyphs'>[Community</text>
 <text x='334.34' y='209.34' style='font-size: 10.00px; font-family: "Avenir";' textLength='39.27px' lengthAdjust='spacingAndGlyphs'>building]</text>
 <text x='380.29' y='209.34' style='font-size: 12.00px;fill: #0072B2; font-family: "Avenir";' textLength='26.55px' lengthAdjust='spacingAndGlyphs'>(HIC)</text>
-<text x='222.13' y='192.11' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='69.00px' lengthAdjust='spacingAndGlyphs'>GiveDirectly</text>
+<a xlink:href="https://www.happierlivesinstitute.org/givedirectly-comprehensive-summary/" target="_blank"><text x='222.13' y='192.11' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='69.00px' lengthAdjust='spacingAndGlyphs'>GiveDirectly</text><line class='hli-link-underline' x1='222.13' y1='193.67' x2='291.13' y2='193.67' stroke-width='0.72' /></a>
 <text x='297.82' y='192.11' style='font-size: 10.00px; font-family: "Avenir";' textLength='24.66px' lengthAdjust='spacingAndGlyphs'>[Cash</text>
 <text x='325.26' y='192.11' style='font-size: 10.00px; font-family: "Avenir";' textLength='40.33px' lengthAdjust='spacingAndGlyphs'>transfers]</text>
 <text x='372.27' y='192.11' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
@@ -262,45 +278,45 @@
 <text x='253.73' y='140.43' style='font-size: 10.00px; font-family: "Avenir";' textLength='49.44px' lengthAdjust='spacingAndGlyphs'>community</text>
 <text x='305.95' y='140.43' style='font-size: 10.00px; font-family: "Avenir";' textLength='59.64px' lengthAdjust='spacingAndGlyphs'>engagement]</text>
 <text x='372.27' y='140.43' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='140.04' y='123.20' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='37.14px' lengthAdjust='spacingAndGlyphs'>Fortify</text>
-<text x='180.73' y='123.20' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='36.94px' lengthAdjust='spacingAndGlyphs'>Health</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/how-iron-fortification-impacts-happiness-a-charity-evaluation-of-fortify-health/" target="_blank"><text x='140.04' y='123.20' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='37.14px' lengthAdjust='spacingAndGlyphs'>Fortify</text>
+<text x='180.73' y='123.20' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='36.94px' lengthAdjust='spacingAndGlyphs'>Health</text><line class='hli-link-underline' x1='140.04' y1='124.76' x2='217.67' y2='124.76' stroke-width='0.72' /></a>
 <text x='224.35' y='123.20' style='font-size: 10.00px; font-family: "Avenir";' textLength='44.97px' lengthAdjust='spacingAndGlyphs'>[Fortifying</text>
 <text x='272.10' y='123.20' style='font-size: 10.00px; font-family: "Avenir";' textLength='26.84px' lengthAdjust='spacingAndGlyphs'>wheat</text>
 <text x='301.73' y='123.20' style='font-size: 10.00px; font-family: "Avenir";' textLength='20.17px' lengthAdjust='spacingAndGlyphs'>flour</text>
 <text x='324.68' y='123.20' style='font-size: 10.00px; font-family: "Avenir";' textLength='18.50px' lengthAdjust='spacingAndGlyphs'>with</text>
 <text x='345.96' y='123.20' style='font-size: 10.00px; font-family: "Avenir";' textLength='19.62px' lengthAdjust='spacingAndGlyphs'>iron]</text>
 <text x='372.27' y='123.20' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='161.98' y='105.97' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='41.58px' lengthAdjust='spacingAndGlyphs'>Shamiri</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/the-wellbeing-cost-effectiveness-of-the-shamiri-institute/" target="_blank"><text x='161.98' y='105.97' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='41.58px' lengthAdjust='spacingAndGlyphs'>Shamiri</text><line class='hli-link-underline' x1='161.98' y1='107.53' x2='203.56' y2='107.53' stroke-width='0.72' /></a>
 <text x='210.24' y='105.97' style='font-size: 10.00px; font-family: "Avenir";' textLength='54.98px' lengthAdjust='spacingAndGlyphs'>[Task-shifted</text>
 <text x='268.01' y='105.97' style='font-size: 10.00px; font-family: "Avenir";' textLength='26.84px' lengthAdjust='spacingAndGlyphs'>group</text>
 <text x='297.63' y='105.97' style='font-size: 10.00px; font-family: "Avenir";' textLength='67.95px' lengthAdjust='spacingAndGlyphs'>psychotherapy]</text>
 <text x='372.27' y='105.97' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='221.68' y='88.74' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='40.02px' lengthAdjust='spacingAndGlyphs'>ACTRA</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/the-promise-of-actra-preventing-crime-with-cognitive-behavioural-therapy/" target="_blank"><text x='221.68' y='88.74' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='40.02px' lengthAdjust='spacingAndGlyphs'>ACTRA</text><line class='hli-link-underline' x1='221.68' y1='90.30' x2='261.70' y2='90.30' stroke-width='0.72' /></a>
 <text x='268.38' y='88.74' style='font-size: 10.00px; font-family: "Avenir";' textLength='21.67px' lengthAdjust='spacingAndGlyphs'>[CBT</text>
 <text x='292.84' y='88.74' style='font-size: 10.00px; font-family: "Avenir";' textLength='9.25px' lengthAdjust='spacingAndGlyphs'>to</text>
 <text x='304.87' y='88.74' style='font-size: 10.00px; font-family: "Avenir";' textLength='30.73px' lengthAdjust='spacingAndGlyphs'>reduce</text>
 <text x='338.38' y='88.74' style='font-size: 10.00px; font-family: "Avenir";' textLength='27.20px' lengthAdjust='spacingAndGlyphs'>crime]</text>
 <text x='372.27' y='88.74' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='131.76' y='71.51' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='71.80px' lengthAdjust='spacingAndGlyphs'>StrongMinds</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/the-wellbeing-cost-effectiveness-of-strongminds-and-friendship-bench-combining-a-systematic-review-and-meta-analysis-with-charity-related-data-nov-2024-update/" target="_blank"><text x='131.76' y='71.51' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='71.80px' lengthAdjust='spacingAndGlyphs'>StrongMinds</text><line class='hli-link-underline' x1='131.76' y1='73.07' x2='203.56' y2='73.07' stroke-width='0.72' /></a>
 <text x='210.24' y='71.51' style='font-size: 10.00px; font-family: "Avenir";' textLength='54.98px' lengthAdjust='spacingAndGlyphs'>[Task-shifted</text>
 <text x='268.01' y='71.51' style='font-size: 10.00px; font-family: "Avenir";' textLength='26.84px' lengthAdjust='spacingAndGlyphs'>group</text>
 <text x='297.63' y='71.51' style='font-size: 10.00px; font-family: "Avenir";' textLength='67.95px' lengthAdjust='spacingAndGlyphs'>psychotherapy]</text>
 <text x='372.27' y='71.51' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='136.46' y='54.29' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='58.94px' lengthAdjust='spacingAndGlyphs'>Friendship</text>
-<text x='198.95' y='54.29' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='34.23px' lengthAdjust='spacingAndGlyphs'>Bench</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/the-wellbeing-cost-effectiveness-of-strongminds-and-friendship-bench-combining-a-systematic-review-and-meta-analysis-with-charity-related-data-nov-2024-update/" target="_blank"><text x='136.46' y='54.29' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='58.94px' lengthAdjust='spacingAndGlyphs'>Friendship</text>
+<text x='198.95' y='54.29' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='34.23px' lengthAdjust='spacingAndGlyphs'>Bench</text><line class='hli-link-underline' x1='136.46' y1='55.85' x2='233.18' y2='55.85' stroke-width='0.72' /></a>
 <text x='239.87' y='54.29' style='font-size: 10.00px; font-family: "Avenir";' textLength='54.98px' lengthAdjust='spacingAndGlyphs'>[Task-shifted</text>
 <text x='297.63' y='54.29' style='font-size: 10.00px; font-family: "Avenir";' textLength='67.95px' lengthAdjust='spacingAndGlyphs'>psychotherapy]</text>
 <text x='372.27' y='54.29' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='142.13' y='37.06' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='45.00px' lengthAdjust='spacingAndGlyphs'>Taimaka</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/how-treating-malnutrition-impacts-happiness-a-charity-evaluation-of-taimaka/" target="_blank"><text x='142.13' y='37.06' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='45.00px' lengthAdjust='spacingAndGlyphs'>Taimaka</text><line class='hli-link-underline' x1='142.13' y1='38.62' x2='187.13' y2='38.62' stroke-width='0.72' /></a>
 <text x='193.82' y='37.06' style='font-size: 10.00px; font-family: "Avenir";' textLength='38.67px' lengthAdjust='spacingAndGlyphs'>[Treating</text>
 <text x='235.27' y='37.06' style='font-size: 10.00px; font-family: "Avenir";' textLength='24.44px' lengthAdjust='spacingAndGlyphs'>acute</text>
 <text x='262.49' y='37.06' style='font-size: 10.00px; font-family: "Avenir";' textLength='53.48px' lengthAdjust='spacingAndGlyphs'>malnutrition</text>
 <text x='318.76' y='37.06' style='font-size: 10.00px; font-family: "Avenir";' textLength='12.20px' lengthAdjust='spacingAndGlyphs'>for</text>
 <text x='333.74' y='37.06' style='font-size: 10.00px; font-family: "Avenir";' textLength='31.84px' lengthAdjust='spacingAndGlyphs'>infants]</text>
 <text x='372.27' y='37.06' style='font-size: 12.00px;fill: #E69F00; font-family: "Avenir";' textLength='34.56px' lengthAdjust='spacingAndGlyphs'>(LMIC)</text>
-<text x='24.40' y='19.83' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='25.56px' lengthAdjust='spacingAndGlyphs'>Pure</text>
+<a xlink:href="https://www.happierlivesinstitute.org/report/toxic-cosmetics-a-shallow-evaluation-of-pure-earth-advocacy-against-leaded-cosmetics-in-ghana/" target="_blank"><text x='24.40' y='19.83' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='25.56px' lengthAdjust='spacingAndGlyphs'>Pure</text>
 <text x='53.51' y='19.83' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='30.02px' lengthAdjust='spacingAndGlyphs'>Earth</text>
-<text x='87.07' y='19.83' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='43.09px' lengthAdjust='spacingAndGlyphs'>(Ghana)</text>
+<text x='87.07' y='19.83' style='font-size: 12.00px; font-weight: 900; font-family: "Avenir";' textLength='43.09px' lengthAdjust='spacingAndGlyphs'>(Ghana)</text><line class='hli-link-underline' x1='24.40' y1='21.39' x2='130.16' y2='21.39' stroke-width='0.72' /></a>
 <text x='136.85' y='19.83' style='font-size: 10.00px; font-family: "Avenir";' textLength='45.94px' lengthAdjust='spacingAndGlyphs'>[Advocacy</text>
 <text x='185.57' y='19.83' style='font-size: 10.00px; font-family: "Avenir";' textLength='12.20px' lengthAdjust='spacingAndGlyphs'>for</text>
 <text x='200.56' y='19.83' style='font-size: 10.00px; font-family: "Avenir";' textLength='39.25px' lengthAdjust='spacingAndGlyphs'>reducing</text>

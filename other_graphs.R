@@ -176,7 +176,7 @@ p_WBp1k <- charity_comparisons_wide %>%
   annotate(
     "richtext",
     x = 55,
-    y = 4.5,
+    y = 3.8,
     label = paste0(
       "<span style='color:#E69F00;font-size:8pt;'>(LMIC)</span> operates in low- or<br>",
       "middle-income countries<br><br>",
@@ -217,6 +217,21 @@ hli_double_save(
     "), Friendship Bench (", round_c(charity_comparisons_wide %>% filter(charity == "Friendship Bench") %>% pull(WBp1k), 1), 
     "), and StrongMinds (", round_c(charity_comparisons_wide %>% filter(charity == "StrongMinds") %>% pull(WBp1k), 1), 
     "). HIC interventions cluster near zero, with Guide Dogs UK producing just ", round_c(charity_comparisons_wide %>% filter(charity == "Guide Dogs UK") %>% pull(WBp1k), 2), " WELLBYs per $1,000 donated."
+  )
+)
+
+#~=======================================================~=
+## Clickable charity links (wider figure) ----
+#~=======================================================~=
+# Only the charities HLI evaluated are linked.
+
+svg_link_bold_labels(
+  svg_path = file.path(graph_dir, "charity_comparisons_full_WBp1k.svg"),
+  charity  = charity_comparisons_wide$charity,
+  url      = ifelse(
+    charity_comparisons_wide$evaluator == "Happier Lives Institute",
+    charity_comparisons_wide$report_url,
+    NA_character_
   )
 )
 

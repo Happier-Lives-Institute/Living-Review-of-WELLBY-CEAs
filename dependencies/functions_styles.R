@@ -105,3 +105,80 @@ hli_double_save <- function(filename_no_end, plot, width, height, dpi,
 
   writeChar(svg_string, svg_path, eos = NULL)
 }
+
+# Wrap the bold runs of an element_markdown axis in links.
+# element_markdown gives one <text> per word, so a label is a run of consecutive
+# nodes sharing a y; only the <b> charity name is bold.
+svg_link_bold_labels <- function(svg_path, charity, url) {
+
+  svg_string <- readChar(svg_path, file.info(svg_path)$size)
+
+  # gridtext renders straight quotes as typographic ones
+  tidy_quotes <- function(x) gsub("[‘’]", "'", x)
+
+  keep   <- !is.na(url)
+  lookup <- setNames(url[keep], tidy_quotes(charity[keep]))
+
+  node_pat <- "<text[^>]*font-weight: 900[^>]*>[^<]*</text>"
+  loc      <- str_locate_all(svg_string, node_pat)[[1]]
+  nodes    <- str_sub(svg_string, loc[, 1], loc[, 2])
+  ys       <- str_match(nodes, "y='([^']*)'")[, 2]
+  words    <- str_match(nodes, ">([^<]*)</text>")[, 2]
+  xs       <- as.numeric(str_match(nodes, "x='([^']*)'")[, 2])
+  lens     <- as.numeric(str_match(nodes, "textLength='([^p]*)px'")[, 2])
+  sizes    <- as.numeric(str_match(nodes, "font-size: ([0-9.]+)px")[, 2])
+
+  runs <- data.frame(
+    start = tapply(loc[, 1], ys, min),
+    end   = tapply(loc[, 2], ys, max),
+    label = tapply(words, ys, function(w) tidy_quotes(paste(w, collapse = " "))),
+    x0    = tapply(xs, ys, min),
+    x1    = tapply(xs + lens, ys, max),
+    size  = tapply(sizes, ys, max)
+  )
+  runs$y   <- as.numeric(rownames(runs))
+  runs$url <- unname(lookup[runs$label])
+  runs <- runs[!is.na(runs$url), ]
+
+  # Splice from the bottom up so earlier positions stay valid
+  for (i in order(runs$start, decreasing = TRUE)) {
+    # One rule per run: text-decoration would underline each word separately,
+    # leaving the spaces bare
+    underline <- sprintf(
+      "<line class='hli-link-underline' x1='%.2f' y1='%.2f' x2='%.2f' y2='%.2f' stroke-width='%.2f' />",
+      runs$x0[i], runs$y[i] + runs$size[i] * 0.13,
+      runs$x1[i], runs$y[i] + runs$size[i] * 0.13,
+      runs$size[i] * 0.06
+    )
+    svg_string <- paste0(
+      str_sub(svg_string, 1, runs$start[i] - 1),
+      "<a xlink:href=\"", runs$url[i], "\" target=\"_blank\">",
+      str_sub(svg_string, runs$start[i], runs$end[i]),
+      underline,
+      "</a>",
+      str_sub(svg_string, runs$end[i] + 1)
+    )
+  }
+
+  # .svglite prefix needed to outrank svglite's own '.svglite line' rule
+  new_styles <- "
+    a text {
+      fill: blue;
+      cursor: pointer;
+    }
+    .svglite line.hli-link-underline {
+      stroke: blue;
+      stroke-linecap: butt;
+      cursor: pointer;
+    }
+    a:hover text {
+      fill: darkblue;
+    }
+    .svglite a:hover line.hli-link-underline {
+      stroke: darkblue;
+    }
+"
+
+  svg_string <- sub("</style>", paste0(new_styles, "  </style>"), svg_string, fixed = TRUE)
+  writeChar(svg_string, svg_path, eos = NULL)
+}
