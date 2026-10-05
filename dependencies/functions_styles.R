@@ -160,9 +160,10 @@ svg_link_bold_labels <- function(svg_path, charity, url) {
     )
   }
 
-  # .svglite prefix needed to outrank svglite's own '.svglite line' rule
+  # .svglite prefix keeps these to the chart, since an inline <style> applies to the
+  # whole web page, and outranks svglite's own '.svglite line' rule
   new_styles <- "
-    a text {
+    .svglite a text {
       fill: blue;
       cursor: pointer;
     }
@@ -171,7 +172,7 @@ svg_link_bold_labels <- function(svg_path, charity, url) {
       stroke-linecap: butt;
       cursor: pointer;
     }
-    a:hover text {
+    .svglite a:hover text {
       fill: darkblue;
     }
     .svglite a:hover line.hli-link-underline {
