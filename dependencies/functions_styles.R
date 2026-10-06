@@ -25,7 +25,7 @@ theme_hli_wbg <- function(axis_title_size = NULL, axis_text_size = NULL,
 }
 
 # Function to save a plot as both PNG and SVG
-hli_double_save <- function(filename_no_end, plot, width, height, dpi, 
+hli_double_save <- function(filename_no_end, plot, width, height, dpi,
                             set_svg_same_ratio = FALSE, units = "in",
                             svg_title = NULL, svg_desc = NULL) {
 
@@ -85,7 +85,7 @@ hli_double_save <- function(filename_no_end, plot, width, height, dpi,
 
     # Build aria-labelledby value
     labelledby <- title_id
-    
+
     # Build nodes to inject
     a11y_nodes <- sprintf('<title id="%s">%s</title>', title_id, svg_title)
 
@@ -95,8 +95,8 @@ hli_double_save <- function(filename_no_end, plot, width, height, dpi,
     }
 
     # Add role and aria-labelledby to opening <svg> tag
-    svg_string <- gsub("(<svg)([^>]*>)", 
-                       sprintf('\\1 role="img" aria-labelledby="%s"\\2', labelledby), 
+    svg_string <- gsub("(<svg)([^>]*>)",
+                       sprintf('\\1 role="img" aria-labelledby="%s"\\2', labelledby),
                        svg_string, perl = TRUE)
 
     # Inject title (and desc) immediately after the opening <svg ...> tag
@@ -119,7 +119,8 @@ svg_link_bold_labels <- function(svg_path, charity, url) {
   keep   <- !is.na(url)
   lookup <- setNames(url[keep], tidy_quotes(charity[keep]))
 
-  node_pat <- "<text[^>]*font-weight: 900[^>]*>[^<]*</text>"
+  # Any bold weight: Avenir's bold is written 900, Montserrat's lighter
+  node_pat <- "<text[^>]*font-weight: (bold|[6-9]00)[^>]*>[^<]*</text>"
   loc      <- str_locate_all(svg_string, node_pat)[[1]]
   nodes    <- str_sub(svg_string, loc[, 1], loc[, 2])
   ys       <- str_match(nodes, "y='([^']*)'")[, 2]

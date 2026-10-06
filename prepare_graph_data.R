@@ -12,7 +12,7 @@ living_review_data <- living_review_data %>%
     ),
     charity_label = paste0(
       "<b>",charity,"</b>",
-      " <span style='font-size:10pt'>[", intervention, "]</span> ", income_label
+      " <span style='font-size:8.5pt'>[", intervention, "]</span> ", income_label
     ),
     charity_label_living = paste0(
       charity, " ", income_label,

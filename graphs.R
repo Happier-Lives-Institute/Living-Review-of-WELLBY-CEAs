@@ -2,6 +2,23 @@
 # Preparations ----
 #~############################################################################~#
 
+# Charts are in Montserrat, the website's font. Registered from its single-weight
+# files: R reads the variable-font file as Thin, which would make bold labels thin.
+if (!"Montserrat HLI" %in% systemfonts::registry_fonts()$family) {
+  mont <- systemfonts::system_fonts()
+  mont_file <- function(style) {
+    mont$path[mont$family == "Montserrat" & mont$style == style & !grepl("Variable", mont$path)][1]
+  }
+  systemfonts::register_font("Montserrat HLI",
+    plain = mont_file("Regular"), bold = mont_file("Bold"),
+    italic = mont_file("Italic"), bolditalic = mont_file("Bold Italic"))
+}
+# Text layers ignore the theme
+theme_set(theme_get() + theme(text = element_text(family = "Montserrat HLI")))
+update_geom_defaults("text",  list(family = "Montserrat HLI"))
+update_geom_defaults("label", list(family = "Montserrat HLI"))
+update_geom_defaults(ggtext::GeomRichText, list(family = "Montserrat HLI"))
+
 height_large_graphs <- max(75*nrow(living_review_data), 1750)
 
 # LMIC/HIC explanatory annotation
@@ -9,6 +26,12 @@ income_annotation_label <- paste0(
   "<span style='color:#E69F00;font-size:9pt;'>(LMIC)</span> operates in low- or<br>",
   "middle-income countries<br><br>",
   "<span style='color:#0072B2;font-size:9pt'>(HIC)</span> operates in<br>high-income countries"
+)
+# The same, smaller, for the WELLBYs per $1,000 dot plot
+income_annotation_label_small <- paste0(
+  "<span style='color:#E69F00;font-size:7.5pt;'>(LMIC)</span> operates in low- or<br>",
+  "middle-income countries<br><br>",
+  "<span style='color:#0072B2;font-size:7.5pt'>(HIC)</span> operates in<br>high-income countries"
 )
 
 # Evaluator colour scale
@@ -24,7 +47,7 @@ depth_size_scale <- scale_size_continuous(
 
 # Common legend styling for the dot plots (position/margin set per plot)
 dotplot_legend_theme <- theme(
-  text = element_text(family = "Avenir"),
+  text = element_text(family = "Montserrat HLI"),
   axis.text.y = ggtext::element_markdown(),
   legend.box.background = element_rect(fill = "transparent", color = "black"),
   legend.text = element_text(size = 10),
@@ -75,11 +98,11 @@ p_WBp1k <- living_review_data %>%
   )) +
   geom_text(
     aes(label = WBp1k_label),
-    hjust = -0.4, color = "black", size = 4, alpha = 1
+    hjust = -0.4, color = "black", size = 3.4, alpha = 1
   ) +
   coord_cartesian(xlim = c(0,120)) +
   scale_x_continuous(
-    breaks = seq(0, 120, 10),
+    breaks = seq(0, 120, 20),
     expand = expansion(mult = c(0.02,0.06))
   ) +
   geom_segment(
@@ -88,6 +111,7 @@ p_WBp1k <- living_review_data %>%
   ) +
   geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() +
+  theme(text = element_text(family = "Montserrat HLI")) +
   scale_alpha(range = c(0.5, 1), guide = "none") +
   ylab("") +
   xlab("WELLBYs created per $1,000 donated") +
@@ -97,16 +121,23 @@ p_WBp1k <- living_review_data %>%
     "richtext",
     x = current_settings$richtext_x_WBp1k,
     y = current_settings$richtext_y_WBp1k,
-    label = income_annotation_label,
+    label = income_annotation_label_small,
     hjust = 0,
-    family = "Avenir",
+    size = 3.4,
+    family = "Montserrat HLI",
     fill = NA,
     label.color = NA
   ) +
   dotplot_legend_theme +
   theme(
     legend.position = c(0.50, 0.45),
-    legend.box.margin = margin(3, 5, 85, 5)
+    legend.box.margin = margin(3, 5, 92, 5),
+    # Smaller than the theme's defaults: Montserrat is wider than Avenir
+    axis.text.y = ggtext::element_markdown(size = 10.5),
+    axis.text.x = element_text(size = 10.5),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 10),
+    axis.title.x = element_text(size = 12)
   ) +
   guides(
     color = guide_legend(override.aes = list(size = 5), order = 1)
@@ -170,6 +201,7 @@ p_CpWB <- living_review_data %>%
   ) +
   geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() +
+  theme(text = element_text(family = "Montserrat HLI")) +
   scale_alpha(range = c(0.5, 1), guide = "none") +
   ylab("") +
   xlab("Cost per WELLBY ($)") +
@@ -181,7 +213,7 @@ p_CpWB <- living_review_data %>%
     y = current_settings$richtext_y_CpWB,
     label = income_annotation_label,
     hjust = 0,
-    family = "Avenir",
+    family = "Montserrat HLI",
     fill = NA,
     label.color = NA
   )+
@@ -268,6 +300,7 @@ p_CpWB_HIC <- living_review_data %>%
   ) +
   geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() +
+  theme(text = element_text(family = "Montserrat HLI")) +
   scale_alpha(range = c(0.5, 1), guide = "none") +
   ylab("") +
   xlab("Cost per WELLBY ($) - High-Income Countries") +
@@ -364,10 +397,11 @@ p_evaluators_CpWB <- living_review_data_by_evaluator %>%
   ) +
   evaluator_color_scale +
   theme_hli_wbg() +
+  theme(text = element_text(family = "Montserrat HLI")) +
   ylab("") +
   xlab("Average cost per WELLBY ($)") +
   theme(
-    text = element_text(family = "Avenir"),
+    text = element_text(family = "Montserrat HLI"),
     legend.position = "none"
   )
 
@@ -435,10 +469,11 @@ p_evaluators_WBp1k <- living_review_data_by_evaluator %>%
   ) +
   evaluator_color_scale +
   theme_hli_wbg() +
+  theme(text = element_text(family = "Montserrat HLI")) +
   ylab("") +
   xlab("Average WELLBY created per $1,000 donated") +
   theme(
-    text = element_text(family = "Avenir"),
+    text = element_text(family = "Montserrat HLI"),
     legend.position = "none"
   )
 
@@ -581,10 +616,11 @@ if(current_settings$version == "living_review") {
     # General settings
     scale_fill_manual(values = comparison_fill_5) +
     theme_hli_wbg() +
+    theme(text = element_text(family = "Montserrat HLI")) +
     ylab("") +
     xlab("Average cost per WELLBY ($)") +
     theme(
-      text = element_text(family = "Avenir"),
+      text = element_text(family = "Montserrat HLI"),
       legend.position = "none"
     )
   
@@ -684,10 +720,11 @@ if(current_settings$version == "living_review") {
     # General settings
     scale_fill_manual(values = comparison_fill_6) +
     theme_hli_wbg() +
+    theme(text = element_text(family = "Montserrat HLI")) +
     ylab("") +
     xlab("Average cost per WELLBY ($)") +
     theme(
-      text = element_text(family = "Avenir"),
+      text = element_text(family = "Montserrat HLI"),
       legend.position = "none",
       axis.text.y = element_text(size = 10)
     )
@@ -811,10 +848,11 @@ if(current_settings$version == "living_review") {
     # General settings
     scale_fill_manual(values = comparison_fill_5) +
     theme_hli_wbg() +
+    theme(text = element_text(family = "Montserrat HLI")) +
     ylab("") +
     xlab("Average WELLBYs created per $1,000 donated") +
     theme(
-      text = element_text(family = "Avenir"),
+      text = element_text(family = "Montserrat HLI"),
       legend.position = "none"
     )
 
@@ -909,10 +947,11 @@ if(current_settings$version == "living_review") {
     # General settings
     scale_fill_manual(values = comparison_fill_6) +
     theme_hli_wbg() +
+    theme(text = element_text(family = "Montserrat HLI")) +
     ylab("") +
     xlab("Average WELLBYs created per $1,000 donated") +
     theme(
-      text = element_text(family = "Avenir"),
+      text = element_text(family = "Montserrat HLI"),
       legend.position = "none",
       axis.text.y = element_text(size = 10)
     )

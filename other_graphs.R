@@ -2,6 +2,23 @@
 # Charity comparisons ----
 #~############################################################################~#
 
+# Charts are in Montserrat, the website's font. Registered from its single-weight
+# files: R reads the variable-font file as Thin, which would make bold labels thin.
+if (!"Montserrat HLI" %in% systemfonts::registry_fonts()$family) {
+  mont <- systemfonts::system_fonts()
+  mont_file <- function(style) {
+    mont$path[mont$family == "Montserrat" & mont$style == style & !grepl("Variable", mont$path)][1]
+  }
+  systemfonts::register_font("Montserrat HLI",
+    plain = mont_file("Regular"), bold = mont_file("Bold"),
+    italic = mont_file("Italic"), bolditalic = mont_file("Bold Italic"))
+}
+# Text layers ignore the theme
+theme_set(theme_get() + theme(text = element_text(family = "Montserrat HLI")))
+update_geom_defaults("text",  list(family = "Montserrat HLI"))
+update_geom_defaults("label", list(family = "Montserrat HLI"))
+update_geom_defaults(ggtext::GeomRichText, list(family = "Montserrat HLI"))
+
 #~=======================================================~=
 ## Evaluated charities ----
 #~=======================================================~=
@@ -26,6 +43,7 @@ p_charity_comparisons <- charity_comparison_data %>%
   ) + 
   geom_point(aes(size = depth_of_analysis)) +
   theme_hli_wbg() + 
+  theme(text = element_text(family = "Montserrat HLI")) +
   scale_alpha(range = c(0.5, 1), guide = "none") + 
   ylab("") +
   xlab("WELLBYs created per $1,000 donated") + 
@@ -141,11 +159,11 @@ p_WBp1k <- charity_comparisons_wide %>%
   )) +
   geom_text(
     aes(label = WBp1k_label), 
-    hjust = -0.4, color = "black", size = 4, alpha = 1
+    hjust = -0.4, color = "black", size = 3.4, alpha = 1
   ) + 
   coord_cartesian(xlim = c(0,120)) + 
   scale_x_continuous(
-    breaks = seq(0, 120, 10),
+    breaks = seq(0, 120, 20),
     expand = expansion(mult = c(0.02,0.06))
   ) +
   geom_segment(
@@ -154,6 +172,7 @@ p_WBp1k <- charity_comparisons_wide %>%
   ) + 
   geom_point(aes(size = depth_of_analysis_num)) +
   theme_hli_wbg() + 
+  theme(text = element_text(family = "Montserrat HLI")) +
   scale_alpha(range = c(0.5, 1), guide = "none") + 
   ylab("") +
   xlab("WELLBYs created per $1,000 donated") + 
@@ -175,27 +194,30 @@ p_WBp1k <- charity_comparisons_wide %>%
   ) + 
   annotate(
     "richtext",
-    x = 55,
+    x = 61,
     y = 3.8,
     label = paste0(
-      "<span style='color:#E69F00;font-size:8pt;'>(LMIC)</span> operates in low- or<br>",
+      "<span style='color:#E69F00;font-size:7pt;'>(LMIC)</span> operates in low- or<br>",
       "middle-income countries<br><br>",
-      "<span style='color:#0072B2;font-size:8pt'>(HIC)</span> operates in<br>high-income countries"
+      "<span style='color:#0072B2;font-size:7pt'>(HIC)</span> operates in<br>high-income countries"
     ),
     hjust = 0,
-    size = 4,
-    family = "Avenir",
+    size = 3.4,
+    family = "Montserrat HLI",
     fill = NA,
     label.color = NA
   ) +
   theme(
-    text = element_text(family = "Avenir"),
-    axis.text.y = ggtext::element_markdown(),
-    legend.position = c(0.45, 0.3), 
+    text = element_text(family = "Montserrat HLI"),
+    legend.position = c(0.458, 0.3), 
+    axis.title.x = element_text(size = 12),
     legend.box.background = element_rect(fill = "transparent", color = "black"),
     legend.box.margin = margin(3, 4, 90, 4),
-    legend.text = element_text(size = 10),
-    legend.title = element_text(size = 11)
+    # Smaller than the theme's defaults: Montserrat is wider than Avenir
+    axis.text.y = ggtext::element_markdown(size = 10.5),
+    axis.text.x = element_text(size = 10.5),
+    legend.text = element_text(size = 9),
+    legend.title = element_text(size = 10)
   ) +
   guides(
     color = guide_legend(override.aes = list(size = 5), order = 1)  
@@ -311,7 +333,7 @@ plot_ratio_bar <- function(
     ) +
     theme_hli_wbg() +
     theme(
-      text = element_text(family = "Avenir"),
+      text = element_text(family = "Montserrat HLI"),
       legend.position = "none",
     )
 }
@@ -393,7 +415,7 @@ bar_graph_public_guess <- ratio_bar_data %>%
   ) +
   theme_hli_wbg() +
   theme(
-    text = element_text(family = "Avenir"),
+    text = element_text(family = "Montserrat HLI"),
     legend.position = "none",
   ); bar_graph_public_guess
 
@@ -533,6 +555,7 @@ p_charity_line_dark_simple <- dat_charity_line %>%
   ) +
   geom_point(aes(color = recommendation, shape = country_income_simple), size = 5) +
   theme_hli_wbg() +
+  theme(text = element_text(family = "Montserrat HLI")) +
   theme(
     axis.text.x = element_blank(),
     axis.ticks.x = element_blank(),

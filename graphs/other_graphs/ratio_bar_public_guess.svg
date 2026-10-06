@@ -25,36 +25,36 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwyNTIuMDA=)'>
-<rect x='0.00' y='0.00' width='432.00' height='252.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='0.000000000000032' y='-0.000000000000057' width='432.00' height='252.00' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 </g>
 <defs>
-  <clipPath id='cpMzcuNTV8NDI1LjAzfDYuOTd8MjA5LjE3'>
-    <rect x='37.55' y='6.97' width='387.48' height='202.20' />
+  <clipPath id='cpMzcuNDd8NDI1LjAzfDYuOTd8MjExLjY5'>
+    <rect x='37.47' y='6.97' width='387.56' height='204.71' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMzcuNTV8NDI1LjAzfDYuOTd8MjA5LjE3)'>
-<rect x='37.55' y='6.97' width='387.48' height='202.20' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<rect x='114.16' y='147.90' width='58.12' height='61.27' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A6CEE3;' />
-<rect x='290.29' y='25.36' width='58.12' height='183.82' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CAB2D6;' />
-<text x='140.50' y='138.67' style='font-size: 12.90px; font-family: "Arial";' textLength='13.62px' lengthAdjust='spacingAndGlyphs'>x1</text>
-<text x='316.63' y='16.13' style='font-size: 12.90px; font-family: "Arial";' textLength='13.62px' lengthAdjust='spacingAndGlyphs'>x3</text>
+<g clip-path='url(#cpMzcuNDd8NDI1LjAzfDYuOTd8MjExLjY5)'>
+<rect x='37.47' y='6.97' width='387.56' height='204.71' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<rect x='114.10' y='149.65' width='58.13' height='62.03' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A6CEE3;' />
+<rect x='290.26' y='25.58' width='58.13' height='186.10' style='stroke-width: 1.36; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CAB2D6;' />
+<text x='140.84' y='140.62' style='font-size: 12.90px; font-family: "Montserrat", sans-serif;' textLength='11.61px' lengthAdjust='spacingAndGlyphs'>x1</text>
+<text x='316.50' y='16.56' style='font-size: 12.90px; font-family: "Montserrat", sans-serif;' textLength='14.16px' lengthAdjust='spacingAndGlyphs'>x3</text>
 </g>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwyNTIuMDA=)'>
-<polyline points='37.55,209.17 37.55,6.97 ' style='stroke-width: 1.07; stroke-linecap: square;' />
-<text x='31.07' y='213.42' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='31.07' y='152.15' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='31.07' y='90.88' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>2</text>
-<text x='31.07' y='29.60' text-anchor='end' style='font-size: 12.00px; font-family: "Avenir";' textLength='6.67px' lengthAdjust='spacingAndGlyphs'>3</text>
-<polyline points='34.06,209.17 37.55,209.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='34.06,147.90 37.55,147.90 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='34.06,86.63 37.55,86.63 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='34.06,25.36 37.55,25.36 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='37.55,209.17 425.03,209.17 ' style='stroke-width: 1.07; stroke-linecap: square;' />
-<polyline points='143.22,212.66 143.22,209.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='319.35,212.66 319.35,209.17 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='143.22' y='224.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='83.34px' lengthAdjust='spacingAndGlyphs'>Average charity</text>
-<text x='319.35' y='224.14' text-anchor='middle' style='font-size: 12.00px; font-family: "Avenir";' textLength='112.89px' lengthAdjust='spacingAndGlyphs'>General public guess</text>
-<text transform='translate(16.88,108.07) rotate(-90)' text-anchor='middle' style='font-size: 14.00px; font-family: "Avenir";' textLength='145.89px' lengthAdjust='spacingAndGlyphs'>Cost-effectiveness ratio</text>
+<polyline points='37.47,211.69 37.47,6.97 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<text x='30.99' y='215.88' text-anchor='end' style='font-size: 12.00px; font-family: "Montserrat", sans-serif;' textLength='7.94px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='30.99' y='153.85' text-anchor='end' style='font-size: 12.00px; font-family: "Montserrat", sans-serif;' textLength='4.33px' lengthAdjust='spacingAndGlyphs'>1</text>
+<text x='30.99' y='91.82' text-anchor='end' style='font-size: 12.00px; font-family: "Montserrat", sans-serif;' textLength='6.81px' lengthAdjust='spacingAndGlyphs'>2</text>
+<text x='30.99' y='29.78' text-anchor='end' style='font-size: 12.00px; font-family: "Montserrat", sans-serif;' textLength='6.77px' lengthAdjust='spacingAndGlyphs'>3</text>
+<polyline points='33.98,211.69 37.47,211.69 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='33.98,149.65 37.47,149.65 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='33.98,87.62 37.47,87.62 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='33.98,25.58 37.47,25.58 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='37.47,211.69 425.03,211.69 ' style='stroke-width: 1.07; stroke-linecap: square;' />
+<polyline points='143.16,215.17 143.16,211.69 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='319.33,215.17 319.33,211.69 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='143.16' y='226.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Montserrat", sans-serif;' textLength='92.84px' lengthAdjust='spacingAndGlyphs'>Average charity</text>
+<text x='319.33' y='226.56' text-anchor='middle' style='font-size: 12.00px; font-family: "Montserrat", sans-serif;' textLength='125.55px' lengthAdjust='spacingAndGlyphs'>General public guess</text>
+<text transform='translate(16.78,109.33) rotate(-90)' text-anchor='middle' style='font-size: 14.00px; font-family: "Montserrat", sans-serif;' textLength='162.64px' lengthAdjust='spacingAndGlyphs'>Cost-effectiveness ratio</text>
 </g>
 </g>
 </svg>

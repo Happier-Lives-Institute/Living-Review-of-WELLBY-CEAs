@@ -11,7 +11,7 @@ my_settings <- data.frame(
   breaks_x_CpWB = c(2500, 10000, 10000, NA),
   richtext_x_CpWB = c(7050, 28500, 28500, NA),
   richtext_y_CpWB = c(9.75, 13.25, 11.25, NA),
-  richtext_x_WBp1k = c(61.5, 61.5, 61.5, NA),
+  richtext_x_WBp1k = c(62, 62, 62, NA),
   richtext_y_WBp1k = c(6, 9, 7, NA),
   max_x_evaluators_CpWB = c(10000, 40000, 40000, NA),
   breaks_x_evaluators_CpWB = c(2000, 10000, 10000, NA),
@@ -93,4 +93,11 @@ for (i in 1:nrow(my_settings)) {
       summarise(n = n()) %>%
       arrange(desc(n)) %>% print()
   }
+}
+
+# Plain sans fallback where Montserrat is missing (an SVG opened on its own)
+for (svg_path in list.files("graphs", pattern = "\\.svg$", recursive = TRUE, full.names = TRUE)) {
+  svg <- readChar(svg_path, file.info(svg_path)$size)
+  writeChar(gsub('font-family: "Montserrat";', 'font-family: "Montserrat", sans-serif;', svg, fixed = TRUE),
+            svg_path, eos = NULL)
 }
